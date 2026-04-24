@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <defs>
+    <radialGradient id="bg" cx="32%" cy="28%" r="78%">
+      <stop offset="0%" stop-color="#7de7c3" stop-opacity="0.95" />
+      <stop offset="45%" stop-color="#123248" stop-opacity="1" />
+      <stop offset="100%" stop-color="#07131d" stop-opacity="1" />
+    </radialGradient>
+    <linearGradient id="text" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fff7e2" />
+      <stop offset="55%" stop-color="#7de7c3" />
+      <stop offset="100%" stop-color="#f1c982" />
+    </linearGradient>
+  </defs>
+
+  <circle cx="64" cy="64" r="58" fill="url(#bg)" />
+  <circle
+    cx="64"
+    cy="64"
+    r="49"
+    fill="none"
+    stroke="#ffffff"
+    stroke-opacity="0.16"
+  />
+  <text
+    x="64"
+    y="72"
+    text-anchor="middle"
+    fill="url(#text)"
+    font-size="38"
+    font-family="Georgia, serif"
+    font-style="italic"
+    font-weight="700"
+    letter-spacing="4"
+  >
+    HA
+  </text>
+</svg>
