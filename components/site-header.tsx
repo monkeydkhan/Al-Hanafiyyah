@@ -76,20 +76,22 @@ export function SiteHeader() {
                 {group.label}
                 <ChevronDown className="h-4 w-4" />
               </button>
-              <div className="invisible absolute left-0 top-full z-10 mt-5 w-64 rounded-2xl border border-[var(--line)] bg-[var(--panel-strong)] p-2 opacity-0 shadow-xl shadow-slate-200/30 transition group-hover:visible group-hover:opacity-100">
-                {group.links.map((link) => {
-                  const Icon = link.icon;
-                  return (
-                    <Link
-                      key={link.href}
-                      href={link.href}
-                      className="flex items-center gap-3 rounded-xl px-3 py-3 text-sm font-extrabold text-[var(--muted)] transition hover:bg-[var(--panel-soft)] hover:text-[var(--primary-strong)]"
-                    >
-                      <Icon className="h-4 w-4 text-[var(--primary-strong)]" />
-                      {link.label}
-                    </Link>
-                  );
-                })}
+              <div className="invisible absolute left-0 top-full z-50 w-64 pt-4 opacity-0 transition group-hover:visible group-hover:opacity-100">
+                <div className="rounded-2xl border border-[var(--line)] bg-[var(--panel-strong)] p-2 shadow-xl shadow-slate-200/30">
+                  {group.links.map((link) => {
+                    const Icon = link.icon;
+                    return (
+                      <Link
+                        key={link.href}
+                        href={link.href}
+                        className="flex items-center gap-3 rounded-xl px-3 py-3 text-sm font-extrabold text-[var(--muted)] transition hover:bg-[var(--panel-soft)] hover:text-[var(--primary-strong)]"
+                      >
+                        <Icon className="h-4 w-4 text-[var(--primary-strong)]" />
+                        {link.label}
+                      </Link>
+                    );
+                  })}
+                </div>
               </div>
             </div>
           ))}

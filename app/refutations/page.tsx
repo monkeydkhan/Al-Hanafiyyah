@@ -1,99 +1,154 @@
-import { AlertTriangle, ArrowRight, BookOpenCheck, FileWarning, ShieldAlert } from "lucide-react";
-import { PageIntro } from "@/components/page-intro";
+import {
+  ArrowRight,
+  BookOpenCheck,
+  FileWarning,
+  Layers3,
+  LibraryBig,
+  MessageSquareQuote,
+  ShieldAlert,
+} from "lucide-react";
+import Link from "next/link";
 import { Reveal } from "@/components/reveal";
 
-const principles = [
+const sectCategories = [
   {
-    title: "Name the claim clearly",
-    description:
-      "Every response should begin by stating the objection in plain language before answering it.",
-    icon: FileWarning,
-  },
-  {
-    title: "Separate evidence from tone",
-    description:
-      "The aim is not loud argument. It is careful sourcing, fair reading, and useful correction.",
-    icon: BookOpenCheck,
-  },
-  {
-    title: "Keep adab in the answer",
-    description:
-      "Refutations should protect belief and practice without training readers to become reckless.",
-    icon: ShieldAlert,
+    title: "Hadadiyyah",
+    arabic: "الحدادية",
+    summary:
+      "A future collection on harsh polemical tendencies, reckless tabdi', and how Sunni scholarship keeps criticism disciplined.",
+    status: "Planned",
+    topics: ["Tabdi'", "Scholarly adab", "Polemical excess"],
   },
 ];
 
-const upcoming = [
-  "Common claims about taqlid and madhhabs",
-  "Misreadings of Hanafi legal method",
-  "Questions around hadith, qiyas, and istihsan",
-  "Notes on sects, polemics, and scholarly boundaries",
+const answerStructure = [
+  {
+    title: "Claim",
+    description: "State the objection without exaggerating it.",
+    icon: MessageSquareQuote,
+  },
+  {
+    title: "Evidence",
+    description: "Bring Qur'an, hadith, fiqh, and cited scholarly texts.",
+    icon: LibraryBig,
+  },
+  {
+    title: "Answer",
+    description: "Separate the ruling, the reasoning, and the practical takeaway.",
+    icon: BookOpenCheck,
+  },
+];
+
+const emptyArticles = [
+  "Overview and boundaries",
+  "Frequently repeated claims",
+  "Primary source excerpts",
+  "Common misquotations",
 ];
 
 export default function RefutationsPage() {
   return (
-    <div className="mx-auto flex w-full max-w-7xl flex-col gap-10 px-4 pb-16 sm:px-8 lg:px-12">
-      <PageIntro
-        eyebrow="Refutations"
-        title="Calm answers to recurring claims."
-        description="A future home for sourced responses, objections, doubts, and polemical notes. The tone stays firm, structured, and useful."
-      />
-
-      <Reveal>
-        <section className="surface-panel rounded-[1.6rem] p-5 sm:p-6">
-          <div className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
-            <div className="flex items-start gap-4">
-              <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[var(--primary-soft)] text-[var(--primary-strong)]">
-                <AlertTriangle className="h-5 w-5" />
-              </span>
-              <div>
-                <h2 className="text-2xl font-black text-foreground">Built for careful responses</h2>
-                <p className="mt-2 max-w-3xl text-sm leading-7 text-[var(--muted)]">
-                  Each refutation can later become its own article with the claim,
-                  the short answer, evidence, scholarly notes, and practical takeaway.
-                </p>
-              </div>
-            </div>
-            <span className="inline-flex items-center gap-2 rounded-full bg-[var(--primary-soft)] px-4 py-2 text-sm font-black text-[var(--primary-strong)]">
-              Coming soon
-              <ArrowRight className="h-4 w-4" />
-            </span>
+    <div className="refutations-shell">
+      <section className="refutations-hero">
+        <Reveal>
+          <div className="refutations-eyebrow">
+            <ShieldAlert className="h-4 w-4" />
+            Refutations
           </div>
-        </section>
-      </Reveal>
+          <h1>Analysis of Sects</h1>
+          <p>
+            A calm archive for categorised responses. Each section will grow into
+            sourced articles that name the claim, cite the evidence, and answer
+            with adab.
+          </p>
+        </Reveal>
+      </section>
 
-      <section className="grid gap-4 lg:grid-cols-3">
-        {principles.map((principle, index) => {
-          const Icon = principle.icon;
+      <section className="refutations-feature">
+        <Reveal>
+          <div className="refutations-feature-card">
+            <div>
+              <span className="refutations-section-label">Categories</span>
+              <h2>Start by choosing the group or claim family.</h2>
+            </div>
+            <div className="refutations-filter-row" aria-label="Sect categories">
+              <a href="#hadadiyyah">Hadadiyyah</a>
+            </div>
+          </div>
+        </Reveal>
+      </section>
 
-          return (
-            <Reveal key={principle.title} delay={0.06 * index}>
-              <article className="surface-panel h-full rounded-[1.5rem] p-5">
-                <span className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-[var(--primary-soft)] text-[var(--primary-strong)]">
+      <section className="refutation-category-grid" aria-label="Refutation categories">
+        {sectCategories.map((category, index) => (
+          <Reveal key={category.title} delay={0.05 * index}>
+            <article
+              id={category.title.toLowerCase().replace(/[^a-z]+/g, "")}
+              className="refutation-category-card"
+            >
+              <div className="refutation-card-top">
+                <span>{category.status}</span>
+                <Layers3 className="h-5 w-5" />
+              </div>
+              <p className="refutation-arabic">{category.arabic}</p>
+              <h2>{category.title}</h2>
+              <p className="refutation-summary">{category.summary}</p>
+              <div className="refutation-topic-list">
+                {category.topics.map((topic) => (
+                  <span key={topic}>{topic}</span>
+                ))}
+              </div>
+              <Link href="/refutations" className="refutation-card-link">
+                View collection
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </article>
+          </Reveal>
+        ))}
+      </section>
+
+      <section className="refutations-method">
+        <Reveal>
+          <div className="yaqeen-section-title">
+            <span />
+            How Each Answer Works
+            <span />
+          </div>
+        </Reveal>
+        <div className="refutation-method-grid">
+          {answerStructure.map((item, index) => {
+            const Icon = item.icon;
+
+            return (
+              <Reveal key={item.title} delay={0.05 * index}>
+                <article className="refutation-method-card">
+                  <span className="refutation-method-number">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
                   <Icon className="h-5 w-5" />
-                </span>
-                <h2 className="mt-5 text-xl font-black text-foreground">
-                  {principle.title}
-                </h2>
-                <p className="mt-3 text-sm leading-7 text-[var(--muted)]">
-                  {principle.description}
-                </p>
-              </article>
-            </Reveal>
-          );
-        })}
+                  <h3>{item.title}</h3>
+                  <p>{item.description}</p>
+                </article>
+              </Reveal>
+            );
+          })}
+        </div>
       </section>
 
       <Reveal>
-        <section className="surface-panel rounded-[1.6rem] p-5 sm:p-6">
-          <h2 className="text-2xl font-black text-foreground">Possible collections</h2>
-          <div className="mt-5 grid gap-3 sm:grid-cols-2">
-            {upcoming.map((item) => (
-              <div
-                key={item}
-                className="surface-soft rounded-[1.1rem] px-4 py-3 text-sm text-[var(--muted)]"
-              >
-                {item}
+        <section className="refutations-empty-panel">
+          <div className="refutations-empty-copy">
+            <span className="refutations-section-label">Coming soon</span>
+            <h2>No refutations have been published yet.</h2>
+            <p>
+              The page is ready for the archive. When content is added, these
+              placeholders can become article cards under each sect category.
+            </p>
+          </div>
+          <div className="refutations-empty-grid">
+            {emptyArticles.map((item) => (
+              <div key={item} className="refutations-empty-card">
+                <FileWarning className="h-4 w-4" />
+                <span>{item}</span>
               </div>
             ))}
           </div>
