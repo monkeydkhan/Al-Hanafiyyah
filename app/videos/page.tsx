@@ -1,271 +1,448 @@
 import Link from "next/link";
-import { ArrowRight, Play, PlayCircle, BookOpen, Zap, Globe } from "lucide-react";
-import { PageIntro } from "@/components/page-intro";
+import {
+  ArrowRight,
+  BookOpen,
+  ChevronLeft,
+  ChevronRight,
+  FileText,
+  GraduationCap,
+  Languages,
+  Layers3,
+  Library,
+  Maximize2,
+  Play,
+  Sparkles,
+} from "lucide-react";
 import { Reveal } from "@/components/reveal";
 import { videos } from "@/lib/site-data";
 
+const stats = [
+  {
+    value: "40+",
+    label: "LESSONS",
+    detail: "Structured creed, fiqh, and research sessions",
+  },
+  {
+    value: "4",
+    label: "PLAYLISTS",
+    detail: "Aqeedah, fiqh, polemics, and study adab",
+  },
+  {
+    value: "3",
+    label: "LANGUAGES",
+    detail: "Arabic, Urdu, and English ready",
+  },
+  {
+    value: "3",
+    label: "STUDY MODES",
+    detail: "Video, text, and transcript layouts",
+  },
+];
+
+const tracks = [
+  {
+    title: "Aqeedah Foundations",
+    category: "Creed Curriculum",
+    description:
+      "Athari primers, core definitions, and guided lessons for belief, worship, and methodology.",
+    lessons: "18 lessons",
+    icon: GraduationCap,
+  },
+  {
+    title: "Hanafi Fiqh Pathway",
+    category: "Fiqh Curriculum",
+    description:
+      "Mukhtasar al-Quduri, worship chapters, and practical ruling sessions with notes beside the lecture.",
+    lessons: "14 lessons",
+    icon: Library,
+  },
+  {
+    title: "Research Capsules",
+    category: "Polemics & Method",
+    description:
+      "Shorter responses, reading maps, and focused briefings for recurring questions and debates.",
+    lessons: "8 lessons",
+    icon: FileText,
+  },
+];
+
+const tools = [
+  {
+    title: "Classical Path",
+    description:
+      "Series organized around texts, chapters, and teachers instead of loose uploads.",
+    icon: BookOpen,
+  },
+  {
+    title: "Immersive Study Tools",
+    description:
+      "Playlist embed, transcript, lesson notes, and reading material can sit in one workspace.",
+    icon: Maximize2,
+  },
+  {
+    title: "Tri-Lingual Support",
+    description:
+      "Keep Arabic, Urdu, and English lesson summaries ready for future toggles.",
+    icon: Languages,
+  },
+];
+
+const curriculumPanels = [
+  {
+    eyebrow: "CREED CURRICULUM",
+    title: "`Umdat al-Aqa'id & Athari creed primers",
+    description:
+      "A dedicated track for foundational aqeedah lessons, terms, and short study notes.",
+    subject: "Aqeedah",
+    lessonTitle: "`Umdat al-Aqa'id - Lesson 1",
+    lessonCopy:
+      "A future playlist embed can live here with synchronized notes, language toggles, and transcript support.",
+    bookTitle: "حول الكتاب",
+    bookCopy:
+      "A concise creed text used to frame belief, methodology, and the language of Sunni creed.",
+  },
+  {
+    eyebrow: "FIQH CURRICULUM",
+    title: "Mukhtasar al-Quduri pathway",
+    description:
+      "A Hanafi fiqh track prepared for rulings, chapter maps, PDFs, and lecture playlists.",
+    subject: "Fiqh",
+    lessonTitle: "Mukhtasar al-Quduri - Lesson 1",
+    lessonCopy:
+      "Embed the fiqh playlist later and pair each class with chapter summaries, legal terms, and review prompts.",
+    bookTitle: "مختصر القدوري",
+    bookCopy:
+      "A foundational Hanafi manual for worship, transactions, and the basic sequence of legal study.",
+  },
+];
+
 export default function VideosPage() {
-  const stats = [
-    {
-      number: "4+",
-      label: "VIDEOS",
-      description: "Structured creed & fiqh lectures",
-    },
-    {
-      number: "2",
-      label: "PLAYLISTS",
-      description: "Aqidah • Fiqh",
-    },
-    {
-      number: "2",
-      label: "LANGUAGES",
-      description: "Arabic • English",
-    },
-    {
-      number: "∞",
-      label: "STUDY MODES",
-      description: "Video • Notes • Transcript",
-    },
-  ];
-
-  const features = [
-    {
-      icon: BookOpen,
-      title: "Classical Texts",
-      description: "Usul al-Thalatha & Athari foundations with guided study.",
-    },
-    {
-      icon: Zap,
-      title: "Deep Learning Tools",
-      description:
-        "Structured notes, discussion points, and connected scholarship.",
-    },
-    {
-      icon: Globe,
-      title: "Multi-Lingual Support",
-      description: "Access content in Arabic and English instantly.",
-    },
-  ];
-
-  const topics = [
-    "Aqidah Foundations",
-    "Fiqh Fundamentals",
-    "Creed & Polemics",
-  ];
-
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#0f0d2d] via-[#1a1847] to-[#1f1b4d]">
-      {/* Header */}
-      <div className="border-b border-white/10 bg-[#0f0d2d]/50 backdrop-blur-sm">
-        <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-4 sm:px-8 lg:px-12">
-          <div className="flex items-center gap-4">
-            <button className="rounded-lg p-2 hover:bg-white/10">
-              <svg
-                className="h-5 w-5 text-white"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              </svg>
-            </button>
-            <Link
-              href="/videos"
-              className="flex items-center gap-2 text-sm font-medium text-white/70 hover:text-white"
-            >
-              <svg
-                className="h-4 w-4"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M15 19l-7-7 7-7"
-                />
-              </svg>
-              Back
-            </Link>
-            <div className="ml-4 text-xs font-semibold uppercase tracking-widest text-white/50">
-              Video Hub
-            </div>
-          </div>
-          <Link
-            href="/"
-            className="rounded-lg border border-white/20 px-4 py-2 text-sm font-medium text-white hover:bg-white/10"
-          >
-            Return Home
-          </Link>
-        </div>
-      </div>
+    <div className="lecture-shell -mt-28 overflow-hidden px-4 pb-20 pt-28 sm:px-8 lg:px-12">
+      <div className="lecture-stars pointer-events-none fixed inset-0 -z-10" />
 
-      {/* Hero Section */}
-      <div className="mx-auto w-full max-w-7xl px-4 py-16 sm:px-8 lg:px-12">
+      <section className="mx-auto max-w-7xl pt-10">
         <Reveal>
-          <div className="space-y-6">
-            <div className="text-xs font-semibold uppercase tracking-widest text-[#9d84f7]">
-              Curated video lectures
-            </div>
-            <h1 className="font-display text-5xl font-bold leading-tight text-white sm:text-6xl">
-              A luminous library for{" "}
-              <span className="bg-gradient-to-r from-[#9d84f7] to-[#7c6fdd] bg-clip-text text-transparent">
-                creed, fiqh & theology
-              </span>
-              .
-            </h1>
-            <p className="max-w-2xl text-lg leading-relaxed text-white/70">
-              Watch full lectures, review key points, and study Islamic
-              knowledge with Athari scholarship. Access structured content on
-              Usul al-Thalatha, Divine attributes, and Hanafi jurisprudence.
-            </p>
-          </div>
-        </Reveal>
-
-        {/* Action Buttons */}
-        <Reveal delay={0.1}>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <button className="rounded-full bg-gradient-to-r from-[#9d84f7] to-[#7c6fdd] px-6 py-3 font-semibold text-white shadow-lg shadow-[#9d84f7]/30 hover:shadow-[#9d84f7]/50 transition-all">
-              Start with Aqidah
-            </button>
-            <button className="rounded-full border border-white/20 px-6 py-3 font-semibold text-white hover:bg-white/10 transition-colors">
-              Study Fiqh Lectures
-            </button>
-          </div>
-        </Reveal>
-
-        {/* Feature Tags */}
-        <Reveal delay={0.15}>
-          <div className="mt-6 flex flex-wrap gap-2">
-            <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-3 py-1 text-sm text-white/70">
-              <Play className="h-4 w-4" />
-              Video lectures
-            </span>
-            <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-3 py-1 text-sm text-white/70">
-              <BookOpen className="h-4 w-4" />
-              Study notes
-            </span>
-            <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-3 py-1 text-sm text-white/70">
-              <Globe className="h-4 w-4" />
-              Multi-lingual
-            </span>
-          </div>
-        </Reveal>
-
-        {/* Stats Grid */}
-        <div className="mt-16 grid gap-5 sm:grid-cols-2">
-          {stats.map((stat, index) => (
-            <Reveal key={index} delay={0.08 * index}>
-              <div className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm">
-                <div className="text-4xl font-bold text-white">{stat.number}</div>
-                <div className="mt-1 text-xs font-semibold uppercase tracking-widest text-white/50">
-                  {stat.label}
-                </div>
-                <div className="mt-3 text-sm text-white/60">{stat.description}</div>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-
-        {/* Features Grid */}
-        <div className="mt-16 grid gap-5 sm:grid-cols-3">
-          {features.map((feature, index) => {
-            const Icon = feature.icon;
-            return (
-              <Reveal key={index} delay={0.08 * index}>
-                <div className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm">
-                  <div className="inline-flex h-12 w-12 items-center justify-center rounded-lg bg-[#9d84f7]/20 text-[#9d84f7]">
-                    <Icon className="h-6 w-6" />
-                  </div>
-                  <h3 className="mt-4 text-lg font-semibold text-white">
-                    {feature.title}
-                  </h3>
-                  <p className="mt-2 text-sm text-white/60">
-                    {feature.description}
-                  </p>
-                </div>
-              </Reveal>
-            );
-          })}
-        </div>
-
-        {/* Videos Grid */}
-        <div className="mt-20">
-          <Reveal>
-            <h2 className="text-3xl font-bold text-white">All Lectures</h2>
-          </Reveal>
-
-          <div className="mt-8 grid gap-5 lg:grid-cols-2">
-            {videos.map((video, index) => (
-              <Reveal key={video.slug} delay={0.06 * index}>
-                <a
-                  href={video.youtubeUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm transition-all hover:bg-white/10 hover:border-white/20"
+          <div className="lecture-panel rounded-[2.4rem] p-6 sm:p-8 lg:p-10">
+            <div className="flex flex-wrap items-center justify-between gap-4">
+              <div className="flex flex-wrap items-center gap-3">
+                <Link
+                  href="/"
+                  className="lecture-chip px-4 py-2 text-sm font-bold transition hover:border-[color:var(--primary)] hover:text-foreground"
                 >
-                  <div className="flex items-start justify-between gap-3">
+                  <ChevronLeft className="h-4 w-4" />
+                  Back
+                </Link>
+                <span className="lecture-chip px-5 py-2 text-xs font-bold uppercase tracking-[0.35em]">
+                  Lectures Hub
+                </span>
+              </div>
+              <Link
+                href="/"
+                className="lecture-chip px-5 py-2 text-sm font-bold transition hover:border-[color:var(--primary)] hover:text-foreground"
+              >
+                Return Home
+              </Link>
+            </div>
+
+            <div className="mt-14 max-w-5xl">
+              <p className="lecture-muted text-xs font-bold uppercase tracking-[0.42em]">
+                Daily Guided Study
+              </p>
+              <h1 className="mt-6 max-w-5xl text-4xl font-black leading-tight tracking-normal text-foreground sm:text-5xl lg:text-6xl">
+                A luminous lectures library for creed, fiqh & polemics.
+              </h1>
+              <p className="lecture-muted mt-6 max-w-3xl text-lg leading-8">
+                Organize full series by subject, keep notes beside each lesson,
+                and prepare playlist embeds for a focused learning workspace.
+              </p>
+            </div>
+
+            <div className="mt-8 flex flex-wrap gap-3">
+              <a href="#aqeedah" className="button-primary transition hover:-translate-y-0.5">
+                Start with Aqeedah
+              </a>
+              <a href="#fiqh" className="button-secondary transition hover:-translate-y-0.5">
+                Study Fiqh Lessons
+              </a>
+            </div>
+
+            <div className="mt-7 flex flex-wrap gap-3">
+              {["Certified texts", "Playlist-ready", "Transcript layout"].map((tag) => (
+                <span
+                  key={tag}
+                  className="lecture-chip px-4 py-2 text-sm font-semibold"
+                >
+                  <Sparkles className="lecture-blue h-4 w-4" />
+                  {tag}
+                </span>
+              ))}
+            </div>
+
+            <div className="mt-10 grid gap-4 sm:grid-cols-2">
+              {stats.map((stat) => (
+                <div
+                  key={stat.label}
+                  className="lecture-card rounded-2xl p-5"
+                >
+                  <div className="text-4xl font-black">{stat.value}</div>
+                  <div className="lecture-muted mt-1 text-sm font-bold uppercase tracking-[0.32em]">
+                    {stat.label}
+                  </div>
+                  <p className="lecture-muted mt-3 text-sm">{stat.detail}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-8 grid gap-4 lg:grid-cols-3">
+              {tools.map((tool) => {
+                const Icon = tool.icon;
+                return (
+                  <div
+                    key={tool.title}
+                    className="lecture-card flex gap-4 rounded-2xl p-5"
+                  >
+                    <span className="lecture-blue-bg flex h-11 w-11 shrink-0 items-center justify-center rounded-full">
+                      <Icon className="h-5 w-5" />
+                    </span>
+                    <div>
+                      <h2 className="font-black text-foreground">{tool.title}</h2>
+                      <p className="lecture-muted mt-2 text-sm leading-6">
+                        {tool.description}
+                      </p>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </Reveal>
+      </section>
+
+      <section className="mx-auto mt-10 grid max-w-7xl gap-5 lg:grid-cols-3">
+        {tracks.map((track, index) => {
+          const Icon = track.icon;
+          return (
+            <Reveal key={track.title} delay={0.06 * index}>
+              <article className="lecture-card group h-full rounded-[1.7rem] p-6 transition hover:-translate-y-1 hover:border-[color:var(--primary)]">
+                <div className="flex items-start justify-between gap-4">
+                  <span className="lecture-blue-bg flex h-12 w-12 items-center justify-center rounded-2xl">
+                    <Icon className="h-6 w-6" />
+                  </span>
+                  <span className="lecture-chip px-3 py-1 text-xs font-bold uppercase tracking-[0.18em]">
+                    {track.category}
+                  </span>
+                </div>
+                <h2 className="mt-7 text-2xl font-black text-foreground">
+                  {track.title}
+                </h2>
+                <p className="lecture-muted mt-3 min-h-24 text-sm leading-7">
+                  {track.description}
+                </p>
+                <div className="mt-6 flex items-center justify-between border-t border-[var(--line)] pt-5">
+                  <span className="lecture-muted text-sm font-bold">
+                    {track.lessons}
+                  </span>
+                  <span className="lecture-blue inline-flex items-center gap-2 text-sm font-black">
+                    Prepare series
+                    <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
+                  </span>
+                </div>
+              </article>
+            </Reveal>
+          );
+        })}
+      </section>
+
+      <section className="mx-auto mt-10 max-w-7xl space-y-10">
+        {curriculumPanels.map((panel, index) => (
+          <Reveal key={panel.eyebrow} delay={0.05 * index}>
+            <article
+              id={panel.subject === "Aqeedah" ? "aqeedah" : "fiqh"}
+              className="lecture-panel rounded-[2rem] p-6 sm:p-8"
+            >
+              <span className="lecture-chip px-5 py-2 text-xs font-black uppercase tracking-[0.34em]">
+                {panel.eyebrow}
+              </span>
+              <h2 className="mt-6 text-3xl font-black text-foreground">
+                {panel.title}
+              </h2>
+              <p className="lecture-muted mt-3 max-w-3xl text-base leading-7">
+                {panel.description}
+              </p>
+
+              <div className="mt-8 grid gap-6 lg:grid-cols-[1.05fr_1fr]">
+                <div className="lecture-card-strong overflow-hidden rounded-3xl">
+                  <div className="lecture-player relative aspect-video">
+                    <div className="absolute inset-0 bg-[linear-gradient(135deg,color-mix(in_oklab,var(--foreground)_8%,transparent),transparent_40%)]" />
+                    <div className="lecture-chip absolute left-4 top-4 px-4 py-2 text-xs font-bold">
+                      Playlist embed placeholder
+                    </div>
+                    <button
+                      type="button"
+                      className="lecture-chip absolute right-4 top-4 flex h-11 w-11 items-center justify-center rounded-2xl"
+                      aria-label="Open lecture player"
+                    >
+                      <Maximize2 className="h-5 w-5" />
+                    </button>
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <span className="lecture-blue-bg flex h-20 w-20 items-center justify-center rounded-full border border-[var(--line)] shadow-2xl shadow-[var(--shadow)]">
+                        <Play className="ml-1 h-9 w-9" />
+                      </span>
+                    </div>
+                    <div className="absolute inset-x-4 bottom-4 rounded-2xl border border-[var(--line)] bg-[var(--panel-strong)] p-4 backdrop-blur-md">
+                      <p className="lecture-muted text-xs font-bold uppercase tracking-[0.28em]">
+                        Guided Lesson
+                      </p>
+                      <h3 className="mt-1 text-lg font-black text-foreground">
+                        {panel.lessonTitle}
+                      </h3>
+                    </div>
+                  </div>
+                  <div className="p-5">
+                    <p className="lecture-muted text-sm leading-7">
+                      {panel.lessonCopy}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="lecture-card-strong rounded-3xl p-6">
+                  <div className="flex flex-wrap items-center justify-between gap-4">
+                    <div>
+                      <p className="lecture-muted text-xs font-bold">
+                        {panel.subject}
+                      </p>
+                      <h3 className="mt-1 text-2xl font-black text-foreground">
+                        {panel.bookTitle}
+                      </h3>
+                    </div>
+                    <div className="lecture-chip grid grid-cols-3 rounded-2xl p-1 text-sm font-black">
+                      <span className="rounded-xl bg-[var(--primary)] px-4 py-2 text-white">AR</span>
+                      <span className="px-4 py-2">UR</span>
+                      <span className="px-4 py-2">EN</span>
+                    </div>
+                  </div>
+
+                  <label className="lecture-muted mt-7 block text-sm font-bold">
+                    Select lesson
+                    <select className="lecture-select mt-3 w-full rounded-2xl px-4 py-3 outline-none transition focus:border-[color:var(--primary)]">
+                      <option>Lesson 1</option>
+                      <option>Lesson 2</option>
+                      <option>Lesson 3</option>
+                    </select>
+                  </label>
+
+                  <div className="mt-6 grid gap-3 sm:grid-cols-3">
+                    {["Book", "Book + Video", "Transcript"].map((mode) => (
+                      <button
+                        key={mode}
+                        type="button"
+                        className="lecture-chip justify-center rounded-2xl px-3 py-3 text-sm font-bold transition hover:border-[color:var(--primary)] hover:text-foreground"
+                      >
+                        {mode}
+                      </button>
+                    ))}
+                  </div>
+
+                  <div className="mt-6 flex gap-3">
+                    <button
+                      type="button"
+                      className="lecture-chip flex h-12 w-12 items-center justify-center rounded-full"
+                      aria-label="Previous lesson"
+                    >
+                      <ChevronLeft className="h-5 w-5" />
+                    </button>
+                    <button
+                      type="button"
+                      className="lecture-chip flex h-12 w-12 items-center justify-center rounded-full"
+                      aria-label="Next lesson"
+                    >
+                      <ChevronRight className="h-5 w-5" />
+                    </button>
+                  </div>
+
+                  <div className="mt-7 space-y-4">
+                    <div className="lecture-card rounded-2xl p-5">
+                      <h4 className="font-black text-foreground">{panel.bookTitle}</h4>
+                      <p className="lecture-muted mt-3 text-sm leading-7">
+                        {panel.bookCopy}
+                      </p>
+                    </div>
+                    <div className="lecture-card rounded-2xl p-5">
+                      <h4 className="font-black text-foreground">Series notes</h4>
+                      <p className="lecture-muted mt-3 text-sm leading-7">
+                        Add teacher notes, PDF links, and short lesson outcomes
+                        here when the playlist is embedded.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </Reveal>
+        ))}
+      </section>
+
+      <section className="mx-auto mt-10 max-w-7xl">
+        <Reveal>
+          <div className="lecture-panel rounded-[2rem] p-6 sm:p-8">
+            <div className="flex flex-wrap items-end justify-between gap-4">
+              <div>
+                <span className="lecture-chip inline-flex items-center gap-2 px-4 py-2 text-xs font-black uppercase tracking-[0.28em]">
+                  <Layers3 className="h-4 w-4" />
+                  Existing Seeds
+                </span>
+                <h2 className="mt-5 text-3xl font-black text-foreground">
+                  Current lecture entries
+                </h2>
+              </div>
+              <p className="lecture-muted max-w-xl text-sm leading-6">
+                These can become the first playlist items once real embeds,
+                PDFs, and transcripts are connected.
+              </p>
+            </div>
+
+            <div className="mt-7 grid gap-4 lg:grid-cols-2">
+              {videos.map((video) => (
+                <article
+                  key={video.slug}
+                  className="lecture-card rounded-2xl p-5"
+                >
+                  <div className="flex items-start justify-between gap-4">
                     <div>
                       <div className="flex flex-wrap gap-2">
-                        <span className="rounded-full bg-[#9d84f7]/20 px-2 py-1 text-xs font-semibold text-[#9d84f7]">
+                        <span className="lecture-blue-bg rounded-full px-3 py-1 text-xs font-bold">
                           {video.category}
                         </span>
-                        <span className="rounded-full bg-white/10 px-2 py-1 text-xs font-semibold text-white/70">
+                        <span className="lecture-chip rounded-full px-3 py-1 text-xs font-bold">
                           {video.level}
                         </span>
                       </div>
-                      <h3 className="mt-4 text-lg font-semibold text-white group-hover:text-[#9d84f7] transition-colors">
+                      <h3 className="mt-4 text-lg font-black text-foreground">
                         {video.title}
                       </h3>
                     </div>
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#9d84f7]/20 text-[#9d84f7] group-hover:bg-[#9d84f7] group-hover:text-white transition-colors">
+                    <span className="lecture-blue-bg flex h-11 w-11 shrink-0 items-center justify-center rounded-full">
                       <Play className="h-5 w-5" />
-                    </div>
-                  </div>
-
-                  <p className="mt-4 text-sm text-white/60">{video.description}</p>
-
-                  <div className="mt-4 flex items-center justify-between">
-                    <div className="text-xs text-white/50">{video.duration}</div>
-                    <span className="inline-flex items-center gap-1 text-sm font-semibold text-[#9d84f7] group-hover:gap-2 transition-all">
-                      Watch
-                      <ArrowRight className="h-4 w-4" />
                     </span>
                   </div>
-                </a>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-
-        {/* Topic Tags */}
-        <div className="mt-20 rounded-2xl border border-white/10 bg-white/5 p-8 backdrop-blur-sm">
-          <Reveal>
-            <h3 className="text-lg font-semibold text-white">
-              Explore by Topic
-            </h3>
-          </Reveal>
-          <Reveal delay={0.05}>
-            <div className="mt-6 flex flex-wrap gap-3">
-              {topics.map((topic) => (
-                <button
-                  key={topic}
-                  className="rounded-full border border-white/20 px-4 py-2 text-sm font-medium text-white hover:bg-white/10 transition-colors"
-                >
-                  {topic}
-                </button>
+                  <p className="lecture-muted mt-4 text-sm leading-6">
+                    {video.summary}
+                  </p>
+                  <div className="mt-5 flex items-center justify-between border-t border-[var(--line)] pt-4 text-sm">
+                    <span className="lecture-muted font-bold">
+                      {video.duration}
+                    </span>
+                    <span className="lecture-blue font-black">
+                      Playlist slot
+                    </span>
+                  </div>
+                </article>
               ))}
             </div>
-          </Reveal>
-        </div>
-      </div>
+          </div>
+        </Reveal>
+      </section>
     </div>
   );
 }
-

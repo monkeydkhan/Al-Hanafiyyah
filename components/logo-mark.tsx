@@ -2,27 +2,41 @@ import Image from "next/image";
 
 type LogoMarkProps = {
   compact?: boolean;
+  iconOnly?: boolean;
+  hero?: boolean;
+  nav?: boolean;
 };
 
-export function LogoMark({ compact = false }: LogoMarkProps) {
+export function LogoMark({
+  compact = false,
+  iconOnly = false,
+  hero = false,
+  nav = false,
+}: LogoMarkProps) {
+  const logoSize = hero
+    ? "h-16 w-16"
+    : nav
+      ? "h-12 w-12"
+      : compact
+        ? "h-10 w-10"
+        : "h-12 w-12";
+  const imageSize = hero ? 56 : nav ? 44 : compact ? 32 : 40;
+
   return (
     <div className={`flex items-center ${compact ? "gap-2.5" : "gap-3"}`}>
-      <span
-        className={`relative inline-flex items-center justify-center overflow-hidden rounded-full border border-[var(--line)] bg-[var(--panel-soft)] p-1 shadow-[0_18px_40px_var(--shadow)] ${
-          compact ? "h-10 w-10" : "h-12 w-12"
-        }`}
-      >
+      <span className={`logo-orb relative inline-flex items-center justify-center overflow-hidden rounded-full p-1 ${logoSize}`}>
         <Image
           src="/hanafii.png"
           alt="Al Hanafiyyah logo"
-          width={compact ? 32 : 40}
-          height={compact ? 32 : 40}
+          width={imageSize}
+          height={imageSize}
           className="h-full w-full rounded-full object-cover"
           priority
         />
       </span>
 
-      <div className="leading-none">
+      {iconOnly ? null : (
+        <div className="leading-none">
         <p
           className={`font-display italic text-foreground ${
             compact ? "text-xl" : "text-2xl"
@@ -35,7 +49,8 @@ export function LogoMark({ compact = false }: LogoMarkProps) {
             Hanafi Athari
           </p>
         ) : null}
-      </div>
+        </div>
+      )}
     </div>
   );
 }

@@ -2,7 +2,6 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
   ArrowLeft,
-  ArrowRight,
   LibraryBig,
   UserRound,
 } from "lucide-react";
@@ -120,7 +119,7 @@ export default async function BookDetailPage({
                 {relatedScholars.map((scholar) => (
                   <Link
                     key={scholar.slug}
-                    href={`/scholars/${scholar.slug}`}
+                    href="/scholars"
                     className="surface-soft block rounded-[1.2rem] px-4 py-4 transition hover:border-[color:var(--primary)]"
                   >
                     <p className="text-sm font-semibold text-foreground">
@@ -133,11 +132,6 @@ export default async function BookDetailPage({
                 ))}
               </div>
             </div>
-
-            <Link href="/admin" className="button-primary w-full">
-              Edit this in admin
-              <ArrowRight className="h-4 w-4" />
-            </Link>
           </aside>
         </div>
       </Reveal>

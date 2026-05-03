@@ -10,8 +10,7 @@ export default function NotFound() {
           That page is not in the library yet.
         </h1>
         <p className="mt-4 max-w-2xl text-sm leading-7 text-[var(--muted)] sm:text-base">
-          Try going back to the books route, the scholars route, or the admin
-          workspace.
+          Try going back to the books route, articles, or the scholars page.
         </p>
         <div className="mt-8 flex flex-wrap gap-3">
           <Link href="/" className="button-secondary">

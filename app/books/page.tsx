@@ -11,11 +11,6 @@ export default function BooksPage() {
         eyebrow="Books"
         title="Book pages ready for summaries, themes, metadata, and future annotations."
         description="This route gives each text its own home instead of burying everything on the landing page. You can keep expanding these cards into a full searchable library."
-        actions={
-          <Link href="/admin" className="button-secondary">
-            Manage from admin
-          </Link>
-        }
       />
 
       <div className="grid gap-5 lg:grid-cols-2">
