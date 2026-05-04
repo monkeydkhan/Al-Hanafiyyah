@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
 
 export default function NotFound() {
   return (
@@ -18,7 +17,6 @@ export default function NotFound() {
           </Link>
           <Link href="/books" className="button-primary">
             Browse books
-            <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
       </div>

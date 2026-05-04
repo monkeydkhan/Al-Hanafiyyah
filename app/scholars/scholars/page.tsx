@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowLeft, ArrowRight, BookOpenText, Feather, ScrollText } from "lucide-react";
+import { ArrowLeft, BookOpenText, Feather, ScrollText } from "lucide-react";
 
 const eras = [
   {
@@ -130,7 +130,6 @@ export default function MadhhabScholarsPage() {
                         <p>Born in {scholar.born}</p>
                         <Link href="/scholars/abu-hanifa">
                           Open biography
-                          <ArrowRight className="h-4 w-4" />
                         </Link>
                       </article>
                     ))}

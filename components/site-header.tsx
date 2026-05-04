@@ -57,16 +57,14 @@ export function SiteHeader() {
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-[var(--line)] bg-[var(--background)] px-2 pr-4 sm:pl-4 sm:pr-8 lg:pl-6 lg:pr-12">
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between gap-5">
-        <Link
-          href="/"
-          className="nav-logo-link flex shrink-0"
-          onClick={() => setOpen(false)}
-          aria-label="Al Hanafiyyah home"
-        >
-          <LogoMark compact iconOnly nav />
-        </Link>
-
         <nav className="hidden items-center gap-7 lg:flex">
+          <Link
+            href="/"
+            className="nav-home-link"
+            onClick={() => setOpen(false)}
+          >
+            Home
+          </Link>
           {navGroups.map((group) => (
             <div key={group.label} className="group relative">
               <button
@@ -184,6 +182,19 @@ export function SiteHeader() {
           </>
         ) : null}
       </AnimatePresence>
+
+      <div className="beta-marquee" aria-label="Beta notice">
+        <div className="beta-marquee-track">
+          <span>
+            Beta mode: Al Hanafiyyah is currently designed for desktop web platforms.
+            Mobile optimisation will come soon.
+          </span>
+          <span aria-hidden="true">
+            Beta mode: Al Hanafiyyah is currently designed for desktop web platforms.
+            Mobile optimisation will come soon.
+          </span>
+        </div>
+      </div>
     </header>
   );
 }

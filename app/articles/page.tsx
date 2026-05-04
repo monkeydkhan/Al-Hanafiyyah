@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, ScrollText } from "lucide-react";
+import { ScrollText } from "lucide-react";
 import { PageIntro } from "@/components/page-intro";
 import { Reveal } from "@/components/reveal";
 
@@ -51,7 +51,6 @@ export default function ArticlesPage() {
               </div>
               <span className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-[var(--primary-strong)]">
                 Read article
-                <ArrowRight className="h-4 w-4" />
               </span>
             </Link>
           </Reveal>

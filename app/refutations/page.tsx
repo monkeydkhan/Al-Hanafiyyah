@@ -1,5 +1,4 @@
 import {
-  ArrowRight,
   BookOpenCheck,
   FileWarning,
   Layers3,
@@ -99,7 +98,6 @@ export default function RefutationsPage() {
               </div>
               <Link href="/refutations" className="refutation-card-link">
                 View collection
-                <ArrowRight className="h-4 w-4" />
               </Link>
             </article>
           </Reveal>

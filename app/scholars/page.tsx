@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, GraduationCap, UsersRound } from "lucide-react";
+import { GraduationCap, UsersRound } from "lucide-react";
 
 const biographyLinks = [
   {
@@ -39,7 +39,6 @@ export default function ScholarsPage() {
                   <strong>{item.label}</strong>
                   <small>{item.description}</small>
                 </span>
-                <ArrowRight className="h-7 w-7" />
               </Link>
             );
           })}

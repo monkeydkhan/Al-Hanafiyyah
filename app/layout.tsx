@@ -55,7 +55,7 @@ export default function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         <div className="relative min-h-screen overflow-x-clip">
           <SiteHeader />
-          <main className="relative z-10 pt-20">{children}</main>
+          <main className="relative z-10 pt-28">{children}</main>
           <SiteFooter />
         </div>
       </body>

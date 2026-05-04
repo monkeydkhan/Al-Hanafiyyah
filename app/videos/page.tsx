@@ -1,9 +1,7 @@
 import Link from "next/link";
 import {
-  ArrowRight,
   BookOpen,
   ChevronLeft,
-  ChevronRight,
   FileText,
   GraduationCap,
   Languages,
@@ -245,7 +243,6 @@ export default function VideosPage() {
                   </span>
                   <span className="lecture-blue inline-flex items-center gap-2 text-sm font-black">
                     Prepare series
-                    <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
                   </span>
                 </div>
               </article>
@@ -354,10 +351,10 @@ export default function VideosPage() {
                     </button>
                     <button
                       type="button"
-                      className="lecture-chip flex h-12 w-12 items-center justify-center rounded-full"
+                      className="lecture-chip flex h-12 items-center justify-center rounded-full px-5"
                       aria-label="Next lesson"
                     >
-                      <ChevronRight className="h-5 w-5" />
+                      Next
                     </button>
                   </div>
 

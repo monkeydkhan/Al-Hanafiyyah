@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 
 const imams = [
   {
@@ -38,7 +38,6 @@ export default function ImamsPage() {
             <span />
             <Link href="/scholars/imams" className="inline-flex items-center gap-3">
               Biography of the Imams
-              <ArrowRight className="h-7 w-7 text-[var(--orange)]" />
             </Link>
             <span />
           </div>
@@ -60,8 +59,8 @@ export default function ImamsPage() {
           </p>
           <p>The hierarchy is as follows:</p>
           <p>
-            Abu Haneefah {"->"} Abu Yoosuf {"->"} Muhammad {"->"} Zufar ibn
-            al-Huthayl {"->"} Al-Hasan ibn Ziyad al-Lu&apos;lu&apos;i.
+            Abu Haneefah, Abu Yoosuf, Muhammad, Zufar ibn al-Huthayl, and
+            Al-Hasan ibn Ziyad al-Lu&apos;lu&apos;i.
           </p>
         </div>
 

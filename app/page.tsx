@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, BookOpen, FileText, GraduationCap, Play, ShieldAlert } from "lucide-react";
+import { BookOpen, FileText, GraduationCap, Play, ShieldAlert } from "lucide-react";
 import { HeroSection } from "@/components/hero-section";
 import { books, scholars, videos } from "@/lib/site-data";
 
@@ -63,7 +63,6 @@ function SectionTitle({ title, href }: { title: string; href: string }) {
       <span />
       <Link href={href} className="inline-flex items-center gap-3">
         {title}
-        <ArrowRight className="h-7 w-7 text-[var(--orange)]" />
       </Link>
       <span />
     </div>
@@ -77,7 +76,7 @@ export default function Home() {
 
       <div className="mx-auto w-full max-w-7xl px-4 pb-16 sm:px-8 lg:px-12">
         <section className="home-row">
-          <SectionTitle title="Trending videos" href="/videos" />
+          <SectionTitle title="Lectures" href="/videos" />
           <div className="media-strip">
             {videoShowcase.map((item) => (
               <Link key={item.title} href={item.href} className="media-card">
@@ -94,7 +93,7 @@ export default function Home() {
         </section>
 
         <section className="home-row">
-          <SectionTitle title="eBooks" href="/books" />
+          <SectionTitle title="Books" href="/books" />
           <div className="book-strip">
             {books.map((book, index) => (
               <Link key={book.slug} href={`/books/${book.slug}`} className="book-card">
@@ -129,7 +128,7 @@ export default function Home() {
         </section>
 
         <section className="home-row">
-          <SectionTitle title="Trending papers" href="/articles" />
+          <SectionTitle title="Articles" href="/articles" />
           <div className="paper-grid">
             <Link href="/articles/hanafi-madhhab-overview" className="paper-card">
               <span>Madhhab</span>

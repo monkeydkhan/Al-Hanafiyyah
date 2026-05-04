@@ -1,6 +1,5 @@
 import Link from "next/link";
 import {
-  ArrowRight,
   BookOpen,
   BookOpenCheck,
   GraduationCap,
@@ -35,6 +34,7 @@ const categories = Array.from(new Set(books.map((book) => book.category))).map(
   (category) => ({
     name: category,
     books: books.filter((book) => book.category === category),
+    href: `/books/topics/${category.toLowerCase()}`,
     ...categoryCopy[category],
   }),
 );
@@ -71,7 +71,7 @@ export default function BooksPage() {
 
           return (
             <Reveal key={category.name} delay={0.05 * index}>
-              <a href={`#${category.name.toLowerCase()}`} className="book-topic-card">
+              <Link href={category.href} className="book-topic-card">
                 <span className="book-topic-icon">
                   <Icon className="h-5 w-5" />
                 </span>
@@ -80,11 +80,8 @@ export default function BooksPage() {
                 </span>
                 <h2>{category.name}</h2>
                 <p>{category.description}</p>
-                <span className="book-topic-link">
-                  View topic
-                  <ArrowRight className="h-4 w-4" />
-                </span>
-              </a>
+                <span className="book-topic-link">Browse</span>
+              </Link>
             </Reveal>
           );
         })}
@@ -98,46 +95,33 @@ export default function BooksPage() {
         </p>
       </section>
 
-      <div className="book-category-sections">
-        {categories.map((category) => (
-          <section
-            key={category.name}
-            id={category.name.toLowerCase()}
-            className="book-category-section"
-          >
-            <div className="yaqeen-section-title">
-              <span />
-              <a href={`#${category.name.toLowerCase()}`}>{category.name}</a>
-              <span />
-            </div>
+      <section className="book-shelf-section">
+        <div className="yaqeen-section-title">
+          <span />
+          <Link href="/books">Books</Link>
+          <span />
+        </div>
 
-            <div className="book-catalog-strip">
-              {category.books.map((book, index) => (
-                <Reveal key={book.slug} delay={0.05 * index}>
-                  <Link href={`/books/${book.slug}`} className="book-catalog-card">
-                    <div className={`book-cover ${coverClass(book)}`}>
-                      {index === 0 ? <span className="new-dot">New!</span> : null}
-                      <p>{book.arabicTitle}</p>
-                      <h3>{book.title}</h3>
-                      <small>{book.category}</small>
-                    </div>
-                    <div className="book-catalog-copy">
-                      <span>{book.level}</span>
-                      <h3>{book.title}</h3>
-                      <p>{book.summary}</p>
-                      <div>
-                        {book.keyThemes.slice(0, 3).map((theme) => (
-                          <small key={theme}>{theme}</small>
-                        ))}
-                      </div>
-                    </div>
-                  </Link>
-                </Reveal>
-              ))}
-            </div>
-          </section>
-        ))}
-      </div>
+        <div className="book-shelf-scroll" aria-label="All books">
+          {books.map((book, index) => (
+            <Reveal key={book.slug} delay={0.04 * index}>
+              <Link href={`/books/${book.slug}`} className="book-catalog-card">
+                <div className={`book-cover ${coverClass(book)}`}>
+                  {index === 0 ? <span className="new-dot">New!</span> : null}
+                  <p>{book.arabicTitle}</p>
+                  <h3>{book.title}</h3>
+                  <small>{book.category}</small>
+                </div>
+                <div className="book-catalog-copy">
+                  <span>{book.category}</span>
+                  <h3>{book.title}</h3>
+                  <p>{book.summary}</p>
+                </div>
+              </Link>
+            </Reveal>
+          ))}
+        </div>
+      </section>
     </div>
   );
 }
