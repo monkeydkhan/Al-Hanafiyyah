@@ -1,32 +1,24 @@
 import Link from "next/link";
-import { BookOpen, GraduationCap, Layers3, LibraryBig, Play } from "lucide-react";
+import { GraduationCap, LibraryBig, Play } from "lucide-react";
 import { Reveal } from "@/components/reveal";
 import { videos } from "@/lib/site-data";
 
 const topicCards = [
   {
     title: "Aqidah",
-    count: "3 lectures",
+    count: "1 playlist",
     description:
-      "Foundational creed lessons, divine attributes, qadr, and transmitted Sunni belief.",
+      "The Usul al-Thalatha playlist for foundational creed and the three principles.",
     icon: GraduationCap,
-    href: "#aqidah",
+    href: "/lectures/aqidah",
   },
   {
     title: "Fiqh",
-    count: "1 lecture",
+    count: "Coming soon",
     description:
       "Hanafi legal method, worship foundations, and structured study through core texts.",
     icon: LibraryBig,
-    href: "#fiqh",
-  },
-  {
-    title: "Study Path",
-    count: "Coming soon",
-    description:
-      "Future guided sequences that connect lectures with books, notes, and revision.",
-    icon: BookOpen,
-    href: "#series",
+    href: "/lectures/fiqh",
   },
 ];
 
@@ -74,24 +66,9 @@ export default function LecturesPage() {
           </div>
         </Reveal>
 
-        <Reveal delay={0.05}>
-          <div className="lectures-hero-panel">
-            <span>Current focus</span>
-            <h2>Creed and Hanafi fiqh foundations</h2>
-            <p>
-              The lecture section is prepared as a study workspace, not a loose
-              video archive.
-            </p>
-            <div>
-              {["Arabic", "Urdu", "English"].map((language) => (
-                <span key={language}>{language}</span>
-              ))}
-            </div>
-          </div>
-        </Reveal>
       </section>
 
-      <section className="lectures-topic-grid" aria-label="Lecture topics">
+      <section className="lectures-topic-grid is-compact" aria-label="Lecture topics">
         {topicCards.map((topic, index) => {
           const Icon = topic.icon;
 
@@ -111,35 +88,42 @@ export default function LecturesPage() {
         })}
       </section>
 
-      <section id="series" className="lectures-series-section">
-        <LecturesSectionTitle title="Featured Series" />
+      <section className="lectures-series-section">
+        <LecturesSectionTitle title="Browse By Topic" />
         <div className="lectures-series-list">
           {seriesCards.map((series, index) => (
             <Reveal key={series.id} delay={0.05 * index}>
-              <article id={series.id} className="lectures-series-card">
+              <article className="lectures-series-card">
                 <div className="lectures-player-card">
                   <div className="lectures-player-art">
                     <span>{series.label}</span>
                     <Play className="h-10 w-10 fill-white text-white" />
                   </div>
                   <div className="lectures-player-meta">
-                    <span className="section-kicker">Series</span>
+                    <span className="section-kicker">Topic</span>
                     <h3>{series.title}</h3>
                     <p>{series.description}</p>
+                    <Link href={`/lectures/${series.id}`} className="lectures-inline-link">
+                      Browse {series.label}
+                    </Link>
                   </div>
                 </div>
 
                 <div className="lectures-lesson-list">
                   {series.lectures.length ? (
                     series.lectures.map((lecture) => (
-                      <article key={lecture.slug} className="lectures-lesson-row">
+                      <Link
+                        key={lecture.slug}
+                        href={`/lectures/${series.id}/${lecture.slug}`}
+                        className="lectures-lesson-row"
+                      >
                         <div>
-                          <span>{lecture.level}</span>
+                          <span>{lecture.category}</span>
                           <h3>{lecture.title}</h3>
                           <p>{lecture.summary}</p>
                         </div>
                         <strong>{lecture.duration}</strong>
-                      </article>
+                      </Link>
                     ))
                   ) : (
                     <article className="lectures-lesson-row">
@@ -161,23 +145,30 @@ export default function LecturesPage() {
       </section>
 
       <section className="lectures-all-section">
-        <LecturesSectionTitle title="All Lectures" />
+        <LecturesSectionTitle title="Recent Lectures" />
         <div className="lectures-shelf">
-          {videos.map((lecture) => (
-            <article key={lecture.slug} className="lectures-shelf-card">
-              <div className="lectures-thumb">
-                <span>{lecture.category}</span>
-                <Play className="h-7 w-7 fill-white text-white" />
-              </div>
-              <span className="section-kicker">{lecture.level}</span>
-              <h3>{lecture.title}</h3>
-              <p>{lecture.summary}</p>
-              <div>
-                <span>{lecture.duration}</span>
-                <Layers3 className="h-4 w-4" />
-              </div>
-            </article>
-          ))}
+          {videos.map((lecture) => {
+            const topic = lecture.category.toLowerCase();
+
+            return (
+              <Link
+                key={lecture.slug}
+                href={`/lectures/${topic}/${lecture.slug}`}
+                className="lectures-shelf-card"
+              >
+                <div className="lectures-thumb">
+                  <span>{lecture.category}</span>
+                  <Play className="h-7 w-7 fill-white text-white" />
+                </div>
+                <h3>{lecture.title}</h3>
+                <p>{lecture.summary}</p>
+                <div>
+                  <span>{lecture.duration}</span>
+                  <span>{lecture.category}</span>
+                </div>
+              </Link>
+            );
+          })}
         </div>
       </section>
     </div>

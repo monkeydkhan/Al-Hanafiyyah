@@ -58,6 +58,15 @@ export type Video = {
   category: string;
   level: string;
   youtubeUrl: string;
+  playlists: Array<{
+    code: string;
+    label: string;
+    youtubeUrl?: string;
+  }>;
+  lessons: Array<{
+    title: string;
+    youtubeUrl?: string;
+  }>;
   summary: string;
   description: string;
   duration: string;
@@ -247,59 +256,70 @@ export const scholars: Scholar[] = [
 
 export const videos: Video[] = [
   {
-    slug: "usul-al-thalatha-intro",
-    title: "Usul al-Thalatha: Introduction to the Three Principles",
+    slug: "usul-al-thalatha",
+    title: "Usul al-Thalatha",
     category: "Aqidah",
-    level: "Beginner",
-    youtubeUrl: "",
+    level: "",
+    youtubeUrl:
+      "https://www.youtube.com/embed/videoseries?si=SOPDVY4cN_7Ad2uy&list=PL2dRQaGGWZOAW9VrMN7HpHSYykChUZRsy",
+    playlists: [
+      { code: "AR", label: "Arabic" },
+      { code: "UR", label: "Urdu" },
+      {
+        code: "EN",
+        label: "English",
+        youtubeUrl:
+          "https://www.youtube.com/embed/videoseries?si=SOPDVY4cN_7Ad2uy&list=PL2dRQaGGWZOAW9VrMN7HpHSYykChUZRsy",
+      },
+    ],
+    lessons: [
+      {
+        title: "Part 1/10: Explanation of Thalaathatul Al-Usool",
+        youtubeUrl: "https://www.youtube.com/embed/JxoWpEbpYOM?list=PL2dRQaGGWZOAW9VrMN7HpHSYykChUZRsy",
+      },
+      {
+        title: "Part 2/10: Explanation of Thalaathatul Al-Usool",
+        youtubeUrl: "https://www.youtube.com/embed/P-JTV8Qr4_8?list=PL2dRQaGGWZOAW9VrMN7HpHSYykChUZRsy",
+      },
+      {
+        title: "Part 3/10: Explanation of Thalaathatul Al-Usool",
+        youtubeUrl: "https://www.youtube.com/embed/3Vw_qZr5IKM?list=PL2dRQaGGWZOAW9VrMN7HpHSYykChUZRsy",
+      },
+      {
+        title: "Part 4/10: Explanation of Thalaathatul Al-Usool",
+        youtubeUrl: "https://www.youtube.com/embed/iTqq1PRhRSU?list=PL2dRQaGGWZOAW9VrMN7HpHSYykChUZRsy",
+      },
+      {
+        title: "Part 5/10: Explanation of Thalaathatul Al-Usool",
+        youtubeUrl: "https://www.youtube.com/embed/jBU90RWYrfc?list=PL2dRQaGGWZOAW9VrMN7HpHSYykChUZRsy",
+      },
+      {
+        title: "Part 6/10: Explanation of Thalaathatul Al-Usool",
+        youtubeUrl: "https://www.youtube.com/embed/wRC2DaXe_lk?list=PL2dRQaGGWZOAW9VrMN7HpHSYykChUZRsy",
+      },
+      {
+        title: "Part 7/10: Explanation of Thalaathatul Al-Usool",
+        youtubeUrl: "https://www.youtube.com/embed/9kabmFvjHJU?list=PL2dRQaGGWZOAW9VrMN7HpHSYykChUZRsy",
+      },
+      {
+        title: "Part 8/10: Explanation of Thalaathatul Al-Usool",
+        youtubeUrl: "https://www.youtube.com/embed/WTzZAuptG4Y?list=PL2dRQaGGWZOAW9VrMN7HpHSYykChUZRsy",
+      },
+      {
+        title: "Part 9/10: Explanation of Thalaathatul Al-Usool",
+        youtubeUrl: "https://www.youtube.com/embed/S9DlEBj4Nd0?list=PL2dRQaGGWZOAW9VrMN7HpHSYykChUZRsy",
+      },
+      {
+        title: "Part 10/10: Explanation of Thalaathatul Al-Usool",
+        youtubeUrl: "https://www.youtube.com/embed/tDo0sctpEXg?list=PL2dRQaGGWZOAW9VrMN7HpHSYykChUZRsy",
+      },
+    ],
     summary:
-      "A foundational lecture introducing the three principles of Islamic creed according to Athari methodology.",
+      "An English playlist introducing the Three Fundamental Principles in a structured Aqidah lesson format.",
     description:
-      "This video provides a clear introduction to Usul al-Thalatha, one of the most essential texts in Islamic theology. It covers the fundamental principles of Athari creed in an accessible way for new learners.",
-    duration: "45 min",
-    keyThemes: ["Tawheed", "Athari creed", "Foundational knowledge"],
-    scholarSlugs: [],
-  },
-  {
-    slug: "tawheed-attributes",
-    title: "The Divine Attributes: Understanding Allah's Names and Qualities",
-    category: "Aqidah",
-    level: "Intermediate",
-    youtubeUrl: "",
-    summary:
-      "An in-depth exploration of Allah's Divine Names and Attributes according to Athari Islamic scholarship.",
-    description:
-      "This lecture delves into the Athari approach to understanding Allah's ninety-nine names and how His attributes relate to His essence. Designed for students with some foundational knowledge.",
-    duration: "60 min",
-    keyThemes: ["Divine attributes", "Asma wa Sifat", "Theological method"],
-    scholarSlugs: [],
-  },
-  {
-    slug: "hanafi-fiqh-basics",
-    title: "Hanafi Fiqh Fundamentals: Legal Methodology and Sources",
-    category: "Fiqh",
-    level: "Beginner",
-    youtubeUrl: "",
-    summary:
-      "An introduction to how Hanafi jurisprudence derives Islamic law from Quran, Sunnah, Ijma, and Qiyas.",
-    description:
-      "This video introduces the legal methodology of the Hanafi school, explaining how jurists reach conclusions on matters of Islamic law through established principles and careful reasoning.",
-    duration: "50 min",
-    keyThemes: ["Legal methodology", "Usul al-Fiqh", "Hanafi school"],
-    scholarSlugs: ["abu-hanifa"],
-  },
-  {
-    slug: "qadr-and-free-will",
-    title: "Divine Decree and Human Will: Reconciling Qadr and Choice",
-    category: "Aqidah",
-    level: "Intermediate",
-    youtubeUrl: "",
-    summary:
-      "An examination of how Islamic creed balances divine predestination with human responsibility and choice.",
-    description:
-      "This lecture addresses one of the most profound questions in Islamic theology: how do we understand Allah's absolute knowledge and decree while maintaining human agency and responsibility?",
-    duration: "55 min",
-    keyThemes: ["Qadr", "Human will", "Divine knowledge", "Theological balance"],
+      "This playlist covers Usul al-Thalatha, a foundational primer on the three principles every Muslim is asked about: knowing Allah, knowing Islam, and knowing the Messenger of Allah, peace and blessings be upon him.",
+    duration: "Playlist",
+    keyThemes: ["Tawheed", "Aqidah", "Three principles", "English"],
     scholarSlugs: [],
   },
 ];
