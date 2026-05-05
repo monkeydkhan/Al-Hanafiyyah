@@ -2,42 +2,76 @@ import Link from "next/link";
 import {
   BookOpen,
   BookOpenCheck,
+  FileText,
   GraduationCap,
+  Languages,
+  Layers3,
   LibraryBig,
+  ScrollText,
   Sparkles,
 } from "lucide-react";
 import { Reveal } from "@/components/reveal";
 import { books, type Book } from "@/lib/site-data";
 
-const categoryCopy: Record<
-  string,
+const libraryTopics: Array<{
+  slug: string;
+  name: string;
+  description: string;
+  icon: typeof BookOpen;
+}> = [
   {
-    description: string;
-    icon: typeof BookOpen;
-  }
-> = {
-  Fiqh: {
+    slug: "fiqh",
+    name: "Fiqh",
     description: "Core Hanafi manuals for worship, daily rulings, and legal training.",
     icon: BookOpen,
   },
-  Aqidah: {
+  {
+    slug: "aqidah",
+    name: "Aqidah",
     description: "Creed texts and primers for transmitted belief and theological clarity.",
     icon: BookOpenCheck,
   },
-  Adab: {
+  {
+    slug: "adab",
+    name: "Adab",
     description: "Study ethics, intention, companionship, and the manners of knowledge.",
     icon: GraduationCap,
   },
-};
+  {
+    slug: "hadith",
+    name: "Hadith",
+    description: "Narration collections, terminology, and hadith study resources.",
+    icon: ScrollText,
+  },
+  {
+    slug: "tafsir",
+    name: "Tafsir",
+    description: "Qur'an commentary, meanings, and guided reading resources.",
+    icon: FileText,
+  },
+  {
+    slug: "usul-al-fiqh",
+    name: "Usul al-Fiqh",
+    description: "Legal theory, evidences, principles, and Hanafi method.",
+    icon: Layers3,
+  },
+  {
+    slug: "arabic",
+    name: "Arabic",
+    description: "Grammar, morphology, reading tools, and language foundations.",
+    icon: Languages,
+  },
+  {
+    slug: "hanafi-tabaqat",
+    name: "Hanafi Tabaqat",
+    description: "Biographical layers, jurist rankings, and school history.",
+    icon: LibraryBig,
+  },
+];
 
-const categories = Array.from(new Set(books.map((book) => book.category))).map(
-  (category) => ({
-    name: category,
-    books: books.filter((book) => book.category === category),
-    href: `/books/topics/${category.toLowerCase()}`,
-    ...categoryCopy[category],
-  }),
-);
+function slugify(value: string) {
+  return value.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+}
 
 function coverClass(book: Book) {
   const byCategory: Record<string, string> = {
@@ -48,6 +82,12 @@ function coverClass(book: Book) {
 
   return byCategory[book.category] ?? "cover-2";
 }
+
+const categories = libraryTopics.map((topic) => ({
+  ...topic,
+  books: books.filter((book) => slugify(book.category) === topic.slug),
+  href: `/books/topics/${topic.slug}`,
+}));
 
 export default function BooksPage() {
   return (
@@ -90,8 +130,8 @@ export default function BooksPage() {
       <section className="books-catalog-note">
         <Sparkles className="h-5 w-5" />
         <p>
-          More categories can be added as the library grows, such as Hadith,
-          Tafsir, Usul al-Fiqh, Arabic, and Hanafi tabaqat.
+          Some topics are prepared for future additions. Browse a category to
+          see its dedicated book shelf.
         </p>
       </section>
 

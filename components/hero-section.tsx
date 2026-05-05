@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const topics = [
   { label: "Hanafi Fiqh", href: "/books" },
-  { label: "Aqidah", href: "/videos" },
+  { label: "Aqidah", href: "/lectures" },
   { label: "Madhhab", href: "/articles/hanafi-madhhab-overview" },
   { label: "Scholars", href: "/scholars" },
   { label: "Refutations", href: "/refutations" },

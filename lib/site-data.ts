@@ -70,7 +70,7 @@ export const mainNavigation: NavigationLink[] = [
   { label: "Articles", href: "/articles", match: "/articles" },
   { label: "Refutations", href: "/refutations", match: "/refutations" },
   { label: "Scholars", href: "/scholars", match: "/scholars" },
-  { label: "Lectures", href: "/videos", match: "/videos" },
+  { label: "Lectures", href: "/lectures", match: "/lectures" },
 ];
 
 export const routePanels: RoutePanel[] = [
@@ -124,7 +124,7 @@ export const routePanels: RoutePanel[] = [
   },
   {
     title: "Lectures",
-    href: "/videos",
+    href: "/lectures",
     summary:
       "Curated lesson series for aqeedah, Hanafi fiqh, polemics, and structured study.",
     icon: Play,

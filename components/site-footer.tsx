@@ -40,6 +40,9 @@ export function SiteFooter() {
           <Link href="/articles/hanafi-madhhab-overview" className="transition-colors hover:text-foreground">
             Hanafi Madhhab
           </Link>
+          <Link href="/about" className="transition-colors hover:text-foreground">
+            About
+          </Link>
         </nav>
       </div>
     </footer>

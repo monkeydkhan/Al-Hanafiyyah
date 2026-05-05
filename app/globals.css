@@ -383,19 +383,19 @@ html[data-theme="dark"] .logo-orb {
 }
 
 .yaqeen-hero h1 {
-  max-width: 50rem;
+  max-width: 44rem;
   color: var(--foreground);
-  font-size: clamp(2.4rem, 5vw, 4.45rem);
+  font-size: clamp(2.1rem, 4.2vw, 3.65rem);
   font-weight: 900;
   letter-spacing: 0;
-  line-height: 1.02;
+  line-height: 1.08;
 }
 
 .yaqeen-hero p {
-  margin-top: 1.35rem;
-  max-width: 43rem;
+  margin-top: 1.15rem;
+  max-width: 40rem;
   color: var(--muted);
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 650;
   line-height: 1.8;
 }
@@ -1189,6 +1189,27 @@ html[data-theme="dark"] .logo-orb {
   gap: clamp(1rem, 2vw, 1.45rem);
 }
 
+.book-topic-shelf-section {
+  margin-top: clamp(3rem, 6vw, 4.5rem);
+}
+
+.book-topic-shelf-scroll {
+  margin-top: 3rem;
+  display: grid;
+  grid-auto-columns: minmax(18rem, 24rem);
+  grid-auto-flow: column;
+  gap: clamp(1rem, 2vw, 1.6rem);
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  padding: 0.3rem 0 1.4rem;
+  scroll-snap-type: inline mandatory;
+  scrollbar-width: thin;
+}
+
+.book-topic-shelf-scroll > * {
+  scroll-snap-align: start;
+}
+
 .book-topic-book-card {
   display: block;
   transition: transform 180ms ease;
@@ -1200,6 +1221,41 @@ html[data-theme="dark"] .logo-orb {
 
 .book-topic-book-card .book-cover {
   min-height: 17rem;
+}
+
+.book-topic-empty-card {
+  width: min(78vw, 30rem);
+  min-height: 17rem;
+  border: 1px solid var(--line);
+  background:
+    linear-gradient(145deg, color-mix(in oklab, var(--primary) 8%, transparent), transparent 58%),
+    var(--panel-strong);
+  padding: 1.4rem;
+  box-shadow: 0 16px 34px color-mix(in oklab, var(--shadow) 48%, transparent);
+}
+
+.book-topic-empty-card span {
+  color: var(--orange);
+  font-size: 0.74rem;
+  font-weight: 950;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.book-topic-empty-card h3 {
+  margin-top: 1.4rem;
+  color: var(--foreground);
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-weight: 950;
+  line-height: 1.1;
+}
+
+.book-topic-empty-card p {
+  margin-top: 0.85rem;
+  color: var(--muted);
+  font-size: 0.95rem;
+  font-weight: 650;
+  line-height: 1.7;
 }
 
 .book-reader-shell {
@@ -1248,22 +1304,14 @@ html[data-theme="dark"] .logo-orb {
 }
 
 .quduri-opening-copy h1 {
-  margin-top: 1.2rem;
-  max-width: 52rem;
+  margin-top: 1rem;
+  max-width: 30rem;
   color: var(--foreground);
   font-family: var(--font-cormorant), serif;
-  font-size: clamp(3.4rem, 8vw, 7rem);
+  font-size: clamp(2.15rem, 4.4vw, 3.4rem);
   font-weight: 700;
   letter-spacing: 0;
-  line-height: 0.88;
-}
-
-.quduri-arabic-title {
-  margin-top: 1rem;
-  color: var(--orange);
-  font-size: clamp(1.8rem, 4vw, 3rem);
-  font-weight: 900;
-  line-height: 1.25;
+  line-height: 1.02;
 }
 
 .quduri-opening-summary {
@@ -1299,15 +1347,33 @@ html[data-theme="dark"] .logo-orb {
     background 180ms ease;
 }
 
+.quduri-secondary-action {
+  display: inline-flex;
+  min-height: 3rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  border: 1px solid color-mix(in oklab, var(--primary) 42%, var(--line));
+  background: var(--background);
+  padding: 0.8rem 1.1rem;
+  color: var(--primary-strong);
+  font-size: 0.92rem;
+  font-weight: 950;
+  transition:
+    transform 180ms ease,
+    background 180ms ease,
+    border-color 180ms ease;
+}
+
+.quduri-secondary-action:hover {
+  transform: translateY(-2px);
+  border-color: var(--primary);
+  background: var(--primary-soft);
+}
+
 .quduri-primary-action:hover {
   transform: translateY(-2px);
   background: var(--primary-strong);
-}
-
-.quduri-reader-note {
-  color: var(--muted);
-  font-size: 0.9rem;
-  font-weight: 800;
 }
 
 .quduri-cover {
@@ -1520,20 +1586,37 @@ html[data-theme="dark"] .logo-orb {
   overflow: hidden;
 }
 
+.reader-modal-eye-comfort {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 223, 170, 0.28),
+      rgba(255, 190, 110, 0.34)
+    );
+  mix-blend-mode: multiply;
+  opacity: 0;
+  transition: opacity 180ms ease;
+}
+
+.reader-modal-root[data-eye-comfort="on"] .reader-modal-eye-comfort {
+  opacity: 1;
+}
+
 .reader-modal-frame iframe {
   display: block;
-  width: 118%;
-  height: 118%;
+  width: 100%;
+  height: 100%;
   border: 0;
-  transform: scale(0.84);
-  transform-origin: top center;
-  margin-left: -9%;
 }
 
 .reader-modal-floating-controls {
   position: absolute;
-  right: clamp(0.85rem, 1.5vw, 1.25rem);
-  top: clamp(0.85rem, 1.5vw, 1.25rem);
+  right: clamp(1rem, 1.8vw, 1.6rem);
+  top: clamp(4rem, 8vh, 5.5rem);
   z-index: 100;
   display: flex;
   flex-direction: column;
@@ -1559,17 +1642,229 @@ html[data-theme="dark"] .logo-orb {
     background 180ms ease;
 }
 
-.reader-modal-floating-controls button:first-child {
-  height: 3.45rem;
-  width: 3.45rem;
-  background: rgba(0, 0, 0, 0.84);
-}
-
 .reader-modal-floating-controls button:hover,
 .reader-modal-floating-controls a:hover {
   transform: translateY(-1px);
   border-color: rgba(255, 255, 255, 0.55);
   background: rgba(0, 0, 0, 0.9);
+}
+
+.reader-modal-floating-controls button.is-active {
+  border-color: rgba(255, 255, 255, 0.28);
+  background: rgba(0, 0, 0, 0.72);
+  color: white;
+}
+
+.reader-language-switcher {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.reader-language-switcher button {
+  height: 3.25rem;
+  width: 3.25rem;
+  border-radius: 1rem;
+  font-size: 0.82rem;
+  font-weight: 950;
+  letter-spacing: 0.04em;
+}
+
+.reader-language-switcher.is-open {
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  padding: 0;
+  box-shadow: none;
+  backdrop-filter: none;
+}
+
+.reader-language-switcher.is-open button {
+  height: 3.25rem;
+  width: 3.25rem;
+  border-radius: 1rem;
+}
+
+.reader-language-switcher button:disabled {
+  cursor: not-allowed;
+  opacity: 0.42;
+}
+
+.reader-language-switcher button.is-active {
+  border-color: rgba(255, 255, 255, 0.28);
+  background: rgba(0, 0, 0, 0.72);
+  color: white;
+}
+
+.about-shell {
+  width: min(100%, 95rem);
+  margin: 0 auto;
+  padding: clamp(1.4rem, 3vw, 2.5rem) clamp(1rem, 4vw, 3rem) 6rem;
+}
+
+.about-hero {
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: clamp(1.4rem, 3vw, 2.2rem);
+}
+
+.about-intro-card {
+  width: min(100%, 58rem);
+  border: 1px solid var(--line);
+  background:
+    linear-gradient(135deg, color-mix(in oklab, var(--primary) 7%, transparent), transparent 56%),
+    var(--panel-strong);
+  padding: clamp(1.2rem, 3vw, 2rem);
+  text-align: center;
+  box-shadow: 0 16px 36px color-mix(in oklab, var(--shadow) 42%, transparent);
+}
+
+.about-bismillah {
+  margin-top: 0.9rem;
+  color: var(--foreground);
+  font-size: clamp(1.25rem, 2.6vw, 2rem);
+  font-weight: 850;
+  line-height: 1.9;
+}
+
+.about-kicker {
+  display: inline-flex;
+  color: var(--primary-strong);
+  font-size: 0.78rem;
+  font-weight: 950;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.about-layout {
+  display: grid;
+  grid-template-columns: 18rem minmax(0, 1fr);
+  gap: clamp(1.5rem, 4vw, 4rem);
+  align-items: start;
+  margin-top: clamp(1.4rem, 3vw, 2.4rem);
+}
+
+.about-nav {
+  position: sticky;
+  top: 8rem;
+  display: grid;
+  gap: 0.7rem;
+  border: 1px solid var(--line);
+  background: var(--panel-strong);
+  padding: 1rem;
+  box-shadow: 0 14px 30px color-mix(in oklab, var(--shadow) 48%, transparent);
+}
+
+.about-nav a {
+  display: grid;
+  gap: 0.25rem;
+  border: 1px solid transparent;
+  padding: 0.8rem;
+  color: var(--muted);
+  font-size: 0.88rem;
+  font-weight: 850;
+  line-height: 1.35;
+  transition:
+    border-color 180ms ease,
+    background 180ms ease,
+    color 180ms ease;
+}
+
+.about-nav a:hover {
+  border-color: color-mix(in oklab, var(--primary) 38%, var(--line));
+  background: var(--panel-soft);
+  color: var(--primary-strong);
+}
+
+.about-nav span {
+  color: var(--orange);
+  font-size: 0.74rem;
+  font-weight: 950;
+}
+
+.about-content {
+  display: grid;
+  gap: 1rem;
+}
+
+.about-section {
+  scroll-margin-top: 8rem;
+  border: 1px solid var(--line);
+  background: var(--panel-strong);
+  padding: clamp(1.25rem, 3vw, 2rem);
+  box-shadow: 0 16px 36px color-mix(in oklab, var(--shadow) 42%, transparent);
+}
+
+.about-section-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  color: var(--primary-strong);
+}
+
+.about-section-heading span {
+  color: var(--orange);
+  font-size: 0.8rem;
+  font-weight: 950;
+  letter-spacing: 0.22em;
+}
+
+.about-section h2 {
+  margin-top: 1rem;
+  max-width: 52rem;
+  color: var(--foreground);
+  font-size: clamp(1.7rem, 4vw, 2.7rem);
+  font-weight: 950;
+  line-height: 1.05;
+}
+
+.about-section p {
+  margin-top: 1rem;
+  max-width: 62rem;
+  color: var(--muted);
+  font-size: 1rem;
+  font-weight: 650;
+  line-height: 1.9;
+}
+
+.about-section blockquote {
+  margin-top: 1.4rem;
+  border-left: 3px solid var(--orange);
+  background: var(--panel-soft);
+  padding: 1rem 1.1rem;
+  color: var(--foreground);
+  font-size: 1rem;
+  font-weight: 800;
+  line-height: 1.8;
+}
+
+.about-license-link {
+  margin-top: 1rem;
+  display: inline-flex;
+  border: 1px solid color-mix(in oklab, var(--primary) 40%, var(--line));
+  background: var(--primary-soft);
+  padding: 0.7rem 0.95rem;
+  color: var(--primary-strong);
+  font-size: 0.86rem;
+  font-weight: 950;
+  transition:
+    transform 180ms ease,
+    background 180ms ease;
+}
+
+.about-license-link:hover {
+  transform: translateY(-1px);
+  background: color-mix(in oklab, var(--primary) 16%, transparent);
+}
+
+.about-signoff {
+  border: 1px solid var(--line);
+  background: var(--background);
+  padding: 1.2rem;
+  color: var(--primary-strong);
+  font-size: 1rem;
+  font-weight: 950;
 }
 
 .refutations-shell {
@@ -2467,6 +2762,14 @@ html[data-theme="dark"] .logo-orb {
     grid-template-columns: 1fr;
   }
 
+  .about-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .about-nav {
+    position: static;
+  }
+
   .book-topic-page-count {
     min-width: 0;
   }
@@ -2514,6 +2817,15 @@ html[data-theme="dark"] .logo-orb {
   .era-scholar-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
+  .lectures-hero,
+  .lectures-series-card {
+    grid-template-columns: 1fr;
+  }
+
+  .lectures-topic-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 @media (max-width: 768px) {
@@ -2531,13 +2843,14 @@ html[data-theme="dark"] .logo-orb {
   }
 
   .reader-modal-floating-controls {
-    right: 0.65rem;
-    top: 0.65rem;
+    right: 0.85rem;
+    top: 3.5rem;
   }
 
   .reader-modal-floating-controls button,
   .reader-modal-floating-controls a,
-  .reader-modal-floating-controls button:first-child {
+  .reader-language-switcher button,
+  .reader-language-switcher.is-open button {
     height: 2.75rem;
     width: 2.75rem;
   }
@@ -2547,6 +2860,25 @@ html[data-theme="dark"] .logo-orb {
   .refutations-empty-panel,
   .refutations-empty-grid {
     grid-template-columns: 1fr;
+  }
+
+  .lectures-topic-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .lectures-section-title {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+    text-align: center;
+  }
+
+  .lectures-section-title span {
+    display: none;
+  }
+
+  .lectures-lesson-row {
+    align-items: flex-start;
+    flex-direction: column;
   }
 }
 
@@ -2957,76 +3289,372 @@ html[data-theme="dark"] .theme-switch-icon:last-of-type {
   transform: scale(1.04);
 }
 
-.lecture-shell {
-  background:
-    radial-gradient(circle at 14% 8%, var(--orb-one), transparent 26%),
-    radial-gradient(circle at 86% 12%, var(--orb-two), transparent 24%),
-    linear-gradient(180deg, var(--bg-top), var(--bg-mid) 48%, var(--bg-bottom));
+.lectures-shell {
+  width: min(100%, 95rem);
+  margin: 0 auto;
+  padding: clamp(1.5rem, 3vw, 2.5rem) clamp(1rem, 4vw, 3rem) 6rem;
+}
+
+.lectures-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(18rem, 28rem);
+  gap: clamp(1.5rem, 4vw, 4rem);
+  align-items: end;
+  border-bottom: 1px solid var(--line);
+  padding: clamp(2rem, 5vw, 4rem) 0 clamp(2rem, 4vw, 3rem);
+}
+
+.lectures-hero-copy h1 {
+  margin-top: 0.9rem;
   color: var(--foreground);
+  font-size: clamp(2.7rem, 7vw, 5.5rem);
+  font-weight: 950;
+  letter-spacing: 0;
+  line-height: 0.95;
 }
 
-.lecture-stars {
-  background-image:
-    radial-gradient(circle, color-mix(in oklab, var(--foreground) 42%, transparent) 1px, transparent 1.5px);
-  background-size: 190px 190px;
-  opacity: 0.28;
+.lectures-hero-copy p {
+  margin-top: 1.2rem;
+  max-width: 44rem;
+  color: var(--muted);
+  font-size: clamp(1rem, 1.5vw, 1.15rem);
+  font-weight: 650;
+  line-height: 1.8;
 }
 
-.lecture-panel {
+.lectures-hero-panel {
   border: 1px solid var(--line);
+  border-top: 3px solid var(--primary);
   background:
-    linear-gradient(180deg, color-mix(in oklab, var(--panel-strong) 92%, transparent), var(--panel));
-  box-shadow:
-    0 32px 70px var(--shadow),
-    inset 0 1px 0 color-mix(in oklab, var(--foreground) 8%, transparent);
-  backdrop-filter: blur(18px);
+    linear-gradient(145deg, color-mix(in oklab, var(--primary) 9%, transparent), transparent 58%),
+    var(--panel-strong);
+  padding: clamp(1.2rem, 3vw, 1.8rem);
+  box-shadow: 0 16px 36px color-mix(in oklab, var(--shadow) 45%, transparent);
 }
 
-.lecture-card {
-  border: 1px solid var(--line);
-  background: var(--panel-soft);
-  box-shadow: 0 18px 42px color-mix(in oklab, var(--shadow) 70%, transparent);
+.lectures-hero-panel > span,
+.lectures-topic-card > span {
+  color: var(--orange);
+  font-size: 0.76rem;
+  font-weight: 950;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
 
-.lecture-card-strong {
-  border: 1px solid var(--line);
-  background: var(--panel-strong);
-  box-shadow: 0 22px 48px color-mix(in oklab, var(--shadow) 80%, transparent);
+.lectures-hero-panel h2 {
+  margin-top: 1rem;
+  color: var(--foreground);
+  font-size: clamp(1.6rem, 3vw, 2.3rem);
+  font-weight: 950;
+  line-height: 1.05;
 }
 
-.lecture-muted {
+.lectures-hero-panel p {
+  margin-top: 0.9rem;
   color: var(--muted);
+  font-size: 0.95rem;
+  font-weight: 650;
+  line-height: 1.7;
 }
 
-.lecture-chip {
-  display: inline-flex;
-  align-items: center;
+.lectures-hero-panel div {
+  display: flex;
+  flex-wrap: wrap;
   gap: 0.5rem;
-  border-radius: 999px;
+  margin-top: 1.2rem;
+}
+
+.lectures-hero-panel div span {
   border: 1px solid var(--line);
-  background: var(--panel-soft);
-  color: var(--muted);
-}
-
-.lecture-blue {
+  background: var(--background);
+  padding: 0.45rem 0.65rem;
   color: var(--primary-strong);
+  font-size: 0.8rem;
+  font-weight: 900;
 }
 
-.lecture-blue-bg {
+.lectures-topic-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(0.9rem, 2vw, 1.2rem);
+  margin-top: clamp(2rem, 4vw, 3rem);
+}
+
+.lectures-topic-card {
+  position: relative;
+  display: block;
+  min-height: 18rem;
+  border: 1px solid var(--line);
+  border-top: 3px solid var(--primary);
+  background: var(--panel-strong);
+  padding: clamp(1rem, 2.4vw, 1.45rem);
+  box-shadow: 0 16px 36px color-mix(in oklab, var(--shadow) 42%, transparent);
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.lectures-topic-card:hover {
+  transform: translateY(-3px);
+  border-color: color-mix(in oklab, var(--primary) 58%, var(--line));
+  box-shadow: 0 20px 42px color-mix(in oklab, var(--shadow) 58%, transparent);
+}
+
+.lectures-topic-icon {
+  display: inline-flex;
+  height: 3rem;
+  width: 3rem;
+  align-items: center;
+  justify-content: center;
   background: var(--primary-soft);
   color: var(--primary-strong);
 }
 
-.lecture-player {
-  background:
-    radial-gradient(circle at 50% 35%, var(--primary-soft), transparent 30%),
-    linear-gradient(135deg, var(--panel-soft), var(--panel-strong));
+.lectures-topic-card > span {
+  position: absolute;
+  right: 1.2rem;
+  top: 1.2rem;
 }
 
-.lecture-select {
-  border: 1px solid var(--line);
-  background: var(--panel-soft);
+.lectures-topic-card h2 {
+  margin-top: 3rem;
   color: var(--foreground);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 950;
+  line-height: 1;
+}
+
+.lectures-topic-card p {
+  margin-top: 1rem;
+  color: var(--muted);
+  font-size: 0.98rem;
+  font-weight: 650;
+  line-height: 1.65;
+}
+
+.lectures-topic-card strong {
+  display: inline-flex;
+  margin-top: 1.2rem;
+  color: var(--primary-strong);
+  font-size: 0.9rem;
+  font-weight: 950;
+}
+
+.lectures-series-section,
+.lectures-all-section {
+  margin-top: clamp(3rem, 6vw, 5rem);
+}
+
+.lectures-section-title {
+  display: grid;
+  grid-template-columns: minmax(2rem, 1fr) auto minmax(2rem, 1fr);
+  gap: clamp(1rem, 3vw, 2rem);
+  align-items: center;
+}
+
+.lectures-section-title span {
+  height: 1px;
+  background: var(--orange);
+}
+
+.lectures-section-title h2 {
+  color: var(--primary);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 950;
+  letter-spacing: 0;
+}
+
+.lectures-series-list {
+  display: grid;
+  gap: clamp(1.2rem, 3vw, 2rem);
+  margin-top: clamp(2rem, 4vw, 3rem);
+}
+
+.lectures-series-card {
+  display: grid;
+  grid-template-columns: minmax(18rem, 0.85fr) minmax(0, 1.15fr);
+  gap: clamp(1rem, 3vw, 2rem);
+  border: 1px solid var(--line);
+  background: var(--panel-strong);
+  padding: clamp(1rem, 2.4vw, 1.5rem);
+  box-shadow: 0 16px 36px color-mix(in oklab, var(--shadow) 42%, transparent);
+}
+
+.lectures-player-card {
+  border: 1px solid var(--line);
+  background: var(--background);
+}
+
+.lectures-player-art,
+.lectures-thumb {
+  position: relative;
+  display: flex;
+  min-height: 17rem;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 78% 20%, rgba(255, 255, 255, 0.26), transparent 13%),
+    linear-gradient(140deg, #172b88, #2f5dff 48%, #93d9f0);
+}
+
+.lectures-player-art::before,
+.lectures-thumb::before {
+  content: "";
+  position: absolute;
+  inset: 0.7rem;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+}
+
+.lectures-player-art > span,
+.lectures-thumb > span {
+  position: absolute;
+  left: 0.9rem;
+  top: 0.9rem;
+  z-index: 1;
+  background: var(--orange);
+  padding: 0.35rem 0.55rem;
+  color: white;
+  font-size: 0.78rem;
+  font-weight: 950;
+}
+
+.lectures-player-art svg,
+.lectures-thumb svg {
+  position: relative;
+  z-index: 1;
+  filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.24));
+}
+
+.lectures-player-meta {
+  padding: 1.2rem;
+}
+
+.lectures-player-meta h3 {
+  margin-top: 0.8rem;
+  color: var(--foreground);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 950;
+  line-height: 1.08;
+}
+
+.lectures-player-meta p {
+  margin-top: 0.8rem;
+  color: var(--muted);
+  font-size: 0.95rem;
+  font-weight: 650;
+  line-height: 1.7;
+}
+
+.lectures-lesson-list {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.lectures-lesson-row {
+  display: flex;
+  min-height: 8.5rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  border: 1px solid var(--line);
+  background: var(--background);
+  padding: 1rem;
+}
+
+.lectures-lesson-row span {
+  color: var(--primary-strong);
+  font-size: 0.78rem;
+  font-weight: 950;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.lectures-lesson-row h3 {
+  margin-top: 0.45rem;
+  color: var(--foreground);
+  font-size: 1.05rem;
+  font-weight: 950;
+  line-height: 1.25;
+}
+
+.lectures-lesson-row p {
+  margin-top: 0.5rem;
+  max-width: 46rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-weight: 650;
+  line-height: 1.55;
+}
+
+.lectures-lesson-row strong {
+  flex: 0 0 auto;
+  color: var(--orange);
+  font-size: 0.85rem;
+  font-weight: 950;
+}
+
+.lectures-shelf {
+  display: grid;
+  grid-auto-columns: minmax(18rem, 24rem);
+  grid-auto-flow: column;
+  gap: clamp(1rem, 2vw, 1.4rem);
+  margin-top: clamp(2rem, 4vw, 3rem);
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  padding: 0.2rem 0 1.4rem;
+  scroll-snap-type: inline mandatory;
+  scrollbar-width: thin;
+}
+
+.lectures-shelf-card {
+  border: 1px solid var(--line);
+  background: var(--panel-strong);
+  padding: 1rem;
+  scroll-snap-align: start;
+  box-shadow: 0 16px 36px color-mix(in oklab, var(--shadow) 42%, transparent);
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease;
+}
+
+.lectures-shelf-card:hover {
+  transform: translateY(-3px);
+  border-color: color-mix(in oklab, var(--primary) 58%, var(--line));
+}
+
+.lectures-shelf-card h3 {
+  margin-top: 1rem;
+  color: var(--foreground);
+  font-size: 1.12rem;
+  font-weight: 950;
+  line-height: 1.28;
+}
+
+.lectures-shelf-card p {
+  margin-top: 0.7rem;
+  color: var(--muted);
+  font-size: 0.92rem;
+  font-weight: 650;
+  line-height: 1.6;
+}
+
+.lectures-shelf-card > div:last-child {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid var(--line);
+  margin-top: 1rem;
+  padding-top: 0.85rem;
+  color: var(--primary-strong);
+  font-size: 0.86rem;
+  font-weight: 950;
+}
+
+.lectures-thumb {
+  min-height: 13.5rem;
+  margin-bottom: 1rem;
 }
 
 @media (prefers-reduced-motion: reduce) {

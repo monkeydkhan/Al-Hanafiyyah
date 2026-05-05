@@ -30,18 +30,21 @@ const navGroups = [
   },
   {
     label: "Watch",
-    links: [{ label: "Lectures", href: "/videos", match: "/videos", icon: Play }],
+    links: [{ label: "Lectures", href: "/lectures", match: "/lectures", icon: Play }],
   },
   {
     label: "Curriculum",
     links: [
-      { label: "Study Path", href: "/videos", match: "/videos", icon: BookOpen },
+      { label: "Study Path", href: "/lectures", match: "/lectures", icon: BookOpen },
       { label: "Hanafi Madhhab", href: "/articles/hanafi-madhhab-overview", match: "/articles/hanafi-madhhab-overview", icon: GraduationCap },
     ],
   },
   {
     label: "Explore",
-    links: [{ label: "Scholars", href: "/scholars", match: "/scholars", icon: GraduationCap }],
+    links: [
+      { label: "Scholars", href: "/scholars", match: "/scholars", icon: GraduationCap },
+      { label: "About", href: "/about", match: "/about", icon: BookOpen },
+    ],
   },
 ];
 

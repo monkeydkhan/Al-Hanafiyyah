@@ -6,13 +6,13 @@ import { books, scholars, videos } from "@/lib/site-data";
 const videoShowcase = [
   {
     title: "Was Dajjal Alive During The Prophet's Time?",
-    href: "/videos",
+    href: "/lectures",
     label: "Signs of the Hour",
     style: "thumb-dajjal",
   },
   {
     title: "Why Nothing Ever Feels Like Enough",
-    href: "/videos",
+    href: "/lectures",
     label: "The Name I Need",
     style: "thumb-empty",
   },
@@ -46,7 +46,7 @@ const curriculum = [
   {
     title: "Athari Creed Primer",
     copy: "A clear track for belief, divine attributes, qadar, and transmitted Sunni creed.",
-    href: "/videos",
+    href: "/lectures",
     icon: GraduationCap,
   },
   {
@@ -76,7 +76,7 @@ export default function Home() {
 
       <div className="mx-auto w-full max-w-7xl px-4 pb-16 sm:px-8 lg:px-12">
         <section className="home-row">
-          <SectionTitle title="Lectures" href="/videos" />
+          <SectionTitle title="Lectures" href="/lectures" />
           <div className="media-strip">
             {videoShowcase.map((item) => (
               <Link key={item.title} href={item.href} className="media-card">
@@ -110,7 +110,7 @@ export default function Home() {
         </section>
 
         <section className="home-row">
-          <SectionTitle title="Curriculum" href="/videos" />
+          <SectionTitle title="Curriculum" href="/lectures" />
           <div className="curriculum-strip">
             {curriculum.map((item) => {
               const Icon = item.icon;
@@ -143,7 +143,7 @@ export default function Home() {
               <h3>{scholars[0].name}: A Foundational Imam</h3>
               <p>{scholars[0].summary}</p>
             </Link>
-            <Link href="/videos" className="paper-card">
+            <Link href="/lectures" className="paper-card">
               <span>Lecture</span>
               <h3>{videos[0].title}</h3>
               <p>{videos[0].summary}</p>
@@ -164,7 +164,7 @@ export default function Home() {
             {[
               { label: "Books", href: "/books", icon: BookOpen },
               { label: "Articles", href: "/articles", icon: FileText },
-              { label: "Lectures", href: "/videos", icon: Play },
+              { label: "Lectures", href: "/lectures", icon: Play },
               { label: "Scholars", href: "/scholars", icon: GraduationCap },
               { label: "Refutations", href: "/refutations", icon: ShieldAlert },
             ].map((item) => {

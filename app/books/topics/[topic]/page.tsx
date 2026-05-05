@@ -4,8 +4,12 @@ import {
   ArrowLeft,
   BookOpen,
   BookOpenCheck,
+  FileText,
   GraduationCap,
+  Languages,
+  Layers3,
   LibraryBig,
+  ScrollText,
 } from "lucide-react";
 import { Reveal } from "@/components/reveal";
 import { books, type Book } from "@/lib/site-data";
@@ -36,6 +40,36 @@ const topicCopy: Record<
       "Study ethics, intention, companionship, and the manners that protect sacred knowledge.",
     icon: GraduationCap,
   },
+  hadith: {
+    title: "Hadith",
+    description:
+      "Narration collections, terminology, and hadith study resources prepared for future additions.",
+    icon: ScrollText,
+  },
+  tafsir: {
+    title: "Tafsir",
+    description:
+      "Qur'an commentary, meanings, and guided reading resources prepared for future additions.",
+    icon: FileText,
+  },
+  "usul-al-fiqh": {
+    title: "Usul al-Fiqh",
+    description:
+      "Legal theory, evidences, principles, and Hanafi method prepared for future additions.",
+    icon: Layers3,
+  },
+  arabic: {
+    title: "Arabic",
+    description:
+      "Grammar, morphology, reading tools, and language foundations prepared for future additions.",
+    icon: Languages,
+  },
+  "hanafi-tabaqat": {
+    title: "Hanafi Tabaqat",
+    description:
+      "Biographical layers, jurist rankings, and school history prepared for future additions.",
+    icon: LibraryBig,
+  },
 };
 
 function coverClass(book: Book) {
@@ -46,6 +80,10 @@ function coverClass(book: Book) {
   };
 
   return byCategory[book.category] ?? "cover-2";
+}
+
+function slugify(value: string) {
+  return value.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
 }
 
 export function generateStaticParams() {
@@ -64,9 +102,7 @@ export default async function BookTopicPage({
     notFound();
   }
 
-  const topicBooks = books.filter(
-    (book) => book.category.toLowerCase() === topic,
-  );
+  const topicBooks = books.filter((book) => slugify(book.category) === topic);
   const Icon = topicInfo.icon;
 
   return (
@@ -109,29 +145,50 @@ export default async function BookTopicPage({
         ))}
       </section>
 
-      <section className="book-topic-book-grid" aria-label={`${topicInfo.title} books`}>
-        {topicBooks.map((book, index) => (
-          <Reveal key={book.slug} delay={0.05 * index}>
-            <Link href={`/books/${book.slug}`} className="book-topic-book-card">
-              <div className={`book-cover ${coverClass(book)}`}>
-                {index === 0 ? <span className="new-dot">New!</span> : null}
-                <p>{book.arabicTitle}</p>
-                <h3>{book.title}</h3>
-                <small>{book.category}</small>
+      <section className="book-topic-shelf-section" aria-label={`${topicInfo.title} books`}>
+        <div className="yaqeen-section-title">
+          <span />
+          <Link href={`/books/topics/${topic}`}>{topicInfo.title}</Link>
+          <span />
+        </div>
+
+        <div className="book-topic-shelf-scroll">
+          {topicBooks.length ? (
+            topicBooks.map((book, index) => (
+              <Reveal key={book.slug} delay={0.05 * index}>
+                <Link href={`/books/${book.slug}`} className="book-topic-book-card">
+                  <div className={`book-cover ${coverClass(book)}`}>
+                    {index === 0 ? <span className="new-dot">New!</span> : null}
+                    <p>{book.arabicTitle}</p>
+                    <h3>{book.title}</h3>
+                    <small>{book.category}</small>
+                  </div>
+                  <div className="book-catalog-copy">
+                    <span>{book.level}</span>
+                    <h3>{book.title}</h3>
+                    <p>{book.summary}</p>
+                    <div>
+                      {book.keyThemes.slice(0, 4).map((theme) => (
+                        <small key={theme}>{theme}</small>
+                      ))}
+                    </div>
+                  </div>
+                </Link>
+              </Reveal>
+            ))
+          ) : (
+            <Reveal>
+              <div className="book-topic-empty-card">
+                <span>Coming soon</span>
+                <h3>{topicInfo.title} books are being prepared.</h3>
+                <p>
+                  This shelf is ready for future texts, summaries, translations,
+                  and study notes.
+                </p>
               </div>
-              <div className="book-catalog-copy">
-                <span>{book.level}</span>
-                <h3>{book.title}</h3>
-                <p>{book.summary}</p>
-                <div>
-                  {book.keyThemes.slice(0, 4).map((theme) => (
-                    <small key={theme}>{theme}</small>
-                  ))}
-                </div>
-              </div>
-            </Link>
-          </Reveal>
-        ))}
+            </Reveal>
+          )}
+        </div>
       </section>
     </div>
   );

@@ -3,8 +3,8 @@ import { notFound } from "next/navigation";
 import {
   ArrowLeft,
   BookMarked,
+  Download,
   LibraryBig,
-  ScrollText,
   UserRound,
 } from "lucide-react";
 import { BookReaderModal } from "@/components/book-reader-modal";
@@ -13,7 +13,7 @@ import { Reveal } from "@/components/reveal";
 import { books, getBookBySlug, getScholarsBySlugs, type Book } from "@/lib/site-data";
 
 const quduriPdf = "https://archive.org/download/Mukhtasar-Al-Quduri/quduri.pdf";
-const quduriReader = `${quduriPdf}#view=FitH&zoom=70`;
+const quduriReader = `${quduriPdf}#view=FitH&zoom=100`;
 
 export function generateStaticParams() {
   return books.map((book) => ({ slug: book.slug }));
@@ -56,9 +56,6 @@ function QuduriBookPage({ book }: { book: Book }) {
               Hanafi Fiqh
             </span>
             <h1>{book.title}</h1>
-            <p className="quduri-arabic-title" dir="rtl">
-              {book.arabicTitle}
-            </p>
             <p className="quduri-opening-summary">
               A foundational Hanafi manual for students beginning structured
               study of worship, daily rulings, and legal method.
@@ -67,10 +64,23 @@ function QuduriBookPage({ book }: { book: Book }) {
             <div className="quduri-action-row">
               <BookReaderModal
                 downloadUrl={quduriPdf}
+                languages={[
+                  {
+                    code: "AR",
+                    label: "Arabic",
+                    readerUrl: quduriReader,
+                    downloadUrl: quduriPdf,
+                  },
+                  { code: "EN", label: "English" },
+                  { code: "UR", label: "Urdu" },
+                ]}
                 readerUrl={quduriReader}
                 title="Read Mukhtasar al-Quduri"
               />
-              <span className="quduri-reader-note">Arabic scan opens in a reader</span>
+              <a href={quduriPdf} className="quduri-secondary-action">
+                Download
+                <Download className="h-4 w-4" />
+              </a>
             </div>
           </div>
         </Reveal>
@@ -89,33 +99,6 @@ function QuduriBookPage({ book }: { book: Book }) {
             </div>
           </Reveal>
         ))}
-      </section>
-
-      <section className="quduri-study-panel">
-        <Reveal>
-          <div className="quduri-study-intro">
-            <span className="book-detail-kicker">
-              <ScrollText className="h-4 w-4" />
-              Study notes
-            </span>
-            <h2>What this page will grow into</h2>
-            <p>
-              Later this can support translations, teacher notes, chapter
-              navigation, vocabulary aids, and side-by-side commentary.
-            </p>
-          </div>
-        </Reveal>
-
-        <div className="quduri-study-list">
-          {book.highlights.map((highlight, index) => (
-            <Reveal key={highlight} delay={0.05 * index}>
-              <div>
-                <span>{String(index + 1).padStart(2, "0")}</span>
-                <p>{highlight}</p>
-              </div>
-            </Reveal>
-          ))}
-        </div>
       </section>
     </div>
   );
