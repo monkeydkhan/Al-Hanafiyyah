@@ -706,6 +706,18 @@ html[data-theme="dark"] .logo-orb {
     linear-gradient(135deg, #eef5ff, #3158ff);
 }
 
+.cover-image-quduri {
+  background:
+    linear-gradient(180deg, rgba(2, 32, 24, 0.08), rgba(2, 20, 16, 0.18)),
+    url("/mukhtasar-al-quduri-cover.jpg") center / cover;
+}
+
+.cover-image-quduri p,
+.cover-image-quduri h3,
+.cover-image-quduri small {
+  opacity: 0;
+}
+
 .cover-2 {
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.18), rgba(49, 88, 255, 0.5)),
@@ -1563,86 +1575,20 @@ html[data-theme="dark"] .logo-orb {
 
 .quduri-cover {
   position: relative;
-  display: flex;
-  min-height: clamp(26rem, 48vw, 37rem);
-  flex-direction: column;
-  justify-content: flex-end;
+  display: block;
+  width: min(100%, 24rem);
   overflow: hidden;
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(9, 26, 80, 0.78)),
-    linear-gradient(135deg, #eef6ff 0%, #3158ff 48%, #0d1b55 100%);
-  padding: clamp(1.2rem, 3vw, 2rem);
+  background: var(--panel-strong);
+  padding: 0.55rem;
   box-shadow:
     0 28px 55px color-mix(in oklab, var(--shadow) 90%, transparent),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.28);
+    inset 0 0 0 1px var(--line);
 }
 
-.quduri-cover::before {
-  content: "";
-  position: absolute;
-  inset: 0.7rem;
-  border: 1px solid rgba(255, 255, 255, 0.48);
-  pointer-events: none;
-}
-
-.quduri-cover::after {
-  content: "";
-  position: absolute;
-  inset: 0 auto 0 0;
-  width: 1.1rem;
-  background:
-    linear-gradient(90deg, rgba(0, 0, 0, 0.22), transparent),
-    rgba(255, 255, 255, 0.08);
-}
-
-.quduri-cover-ornament {
-  position: absolute;
-  right: 1.6rem;
-  top: 1.6rem;
-  height: 5.8rem;
-  width: 5.8rem;
-  border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.46);
-  background:
-    radial-gradient(circle, rgba(255, 255, 255, 0.28), transparent 62%),
-    rgba(255, 255, 255, 0.08);
-}
-
-.quduri-cover p,
-.quduri-cover h2,
-.quduri-cover span,
-.quduri-cover small {
-  position: relative;
-  z-index: 1;
-}
-
-.quduri-cover p {
-  color: rgba(255, 255, 255, 0.82);
-  font-size: clamp(1.5rem, 4vw, 2.5rem);
-  font-weight: 900;
-  text-align: right;
-}
-
-.quduri-cover h2 {
-  margin-top: 1.1rem;
-  color: white;
-  font-size: clamp(2.4rem, 6vw, 4.2rem);
-  font-weight: 950;
-  line-height: 0.94;
-}
-
-.quduri-cover span {
-  margin-top: 1.2rem;
-  color: rgba(255, 255, 255, 0.9);
-  font-size: 1rem;
-  font-weight: 950;
-}
-
-.quduri-cover small {
-  margin-top: 0.45rem;
-  color: rgba(255, 255, 255, 0.68);
-  font-size: 0.9rem;
-  font-weight: 800;
+.quduri-cover img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 .quduri-meta-grid {
@@ -2446,6 +2392,51 @@ html[data-theme="dark"] .logo-orb {
 
 .scholar-link-row:hover > svg {
   transform: translateX(0.4rem);
+}
+
+.scholar-coming-soon-shell {
+  width: min(100%, 76rem);
+  margin: 0 auto;
+  padding: clamp(1.5rem, 3vw, 2.5rem) clamp(1rem, 4vw, 3rem) 6rem;
+}
+
+.scholar-coming-soon-card {
+  border: 1px solid var(--line);
+  border-top: 3px solid var(--primary);
+  background:
+    linear-gradient(145deg, color-mix(in oklab, var(--primary) 8%, transparent), transparent 58%),
+    var(--panel-strong);
+  margin-top: clamp(2rem, 4vw, 3rem);
+  padding: clamp(1.4rem, 4vw, 3rem);
+  box-shadow: 0 18px 42px color-mix(in oklab, var(--shadow) 46%, transparent);
+}
+
+.scholar-coming-soon-icon {
+  display: inline-flex;
+  height: 3.2rem;
+  width: 3.2rem;
+  align-items: center;
+  justify-content: center;
+  background: var(--primary-soft);
+  color: var(--primary-strong);
+}
+
+.scholar-coming-soon-card h1 {
+  margin-top: 1rem;
+  color: var(--foreground);
+  font-size: clamp(2.3rem, 6vw, 5rem);
+  font-weight: 950;
+  letter-spacing: 0;
+  line-height: 0.98;
+}
+
+.scholar-coming-soon-card p {
+  margin-top: 1rem;
+  max-width: 44rem;
+  color: var(--muted);
+  font-size: clamp(1rem, 1.5vw, 1.12rem);
+  font-weight: 650;
+  line-height: 1.8;
 }
 
 .scholar-link-icon {

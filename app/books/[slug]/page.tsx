@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import {
   ArrowLeft,
@@ -22,11 +23,13 @@ export function generateStaticParams() {
 function QuduriCover() {
   return (
     <div className="quduri-cover" aria-label="Mukhtasar al-Quduri cover">
-      <div className="quduri-cover-ornament" />
-      <p dir="rtl">مختصر القدوري</p>
-      <h2>Mukhtasar al-Quduri</h2>
-      <span>Hanafi Fiqh</span>
-      <small>Imam Abu al-Husayn al-Quduri</small>
+      <Image
+        src="/mukhtasar-al-quduri-cover.jpg"
+        alt="Mukhtasar al-Quduri book cover"
+        width={580}
+        height={661}
+        priority
+      />
     </div>
   );
 }

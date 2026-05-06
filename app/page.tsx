@@ -70,7 +70,7 @@ export default function Home() {
           <div className="book-strip">
             {homepageBooks.map((book, index) => (
               <Link key={book.slug} href={`/books/${book.slug}`} className="book-card">
-                <div className={`book-cover cover-${index + 1}`}>
+                <div className={`book-cover cover-${index + 1} cover-image-quduri`}>
                   {index === 0 ? <span className="new-dot">New!</span> : null}
                   <p>{book.arabicTitle}</p>
                   <h3>{book.title}</h3>
